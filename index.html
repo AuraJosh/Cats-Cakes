@@ -4,19 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Company</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#1E40AF',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <header>
-    <h1>Welcome to My Company</h1>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-brand text-white text-center py-6">
+    <h1 class="text-4xl font-bold">Welcome to My Company</h1>
+    <p class="text-lg mt-2">We build amazing things.</p>
   </header>
-  <main>
-    <p>We offer the best services.</p>
+
+  <main class="p-8 text-center">
+    <p class="text-xl mb-4">Our services are top-notch and made for you.</p>
+    <a href="#contact" class="inline-block bg-brand hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+      Contact Us
+    </a>
   </main>
-  <footer>
+
+  <footer class="bg-gray-800 text-gray-300 text-center py-4 mt-8">
     <p>© 2025 My Company</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
