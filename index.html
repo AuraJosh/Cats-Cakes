@@ -179,6 +179,19 @@
   });
 </script>
 
+<!-- Business Chatbot Widget CSS and JS -->
+<link rel="stylesheet" href="path/to/widget.css">
+<script src="path/to/widget.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatWidget = new BusinessChatWidget({
+      apiKey: 'your-api-key-here',
+      apiEndpoint: 'https://your-lambda-api-endpoint.amazonaws.com/prod/chat',
+      widgetTitle: 'Business Assistant',
+      primaryColor: '#4a90e2'
+    });
+  });
+</script>
+
 </body>
 </html>
-
