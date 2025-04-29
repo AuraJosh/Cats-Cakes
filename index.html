@@ -24,9 +24,8 @@
 <!-- Navbar -->
 <header class="fixed w-full bg-white dark:bg-gray-900 shadow z-50">
   <div class="container mx-auto flex justify-between items-center p-4">
-    <a href="#home" class="flex items-center space-x-2">
-      <img src="Aura Logo V2 Close Up.png" alt="Aura AI Logo" class="h-10 w-auto">
-    </a>
+    
+    <!-- Navigation Menu -->
     <nav class="hidden md:flex space-x-6">
       <a href="#home" class="hover:text-primary">Home</a>
       <a href="#services" class="hover:text-primary">Services</a>
@@ -35,7 +34,14 @@
       <a href="#blog" class="hover:text-primary">Blog</a>
       <a href="#contact" class="hover:text-primary">Contact</a>
     </nav>
-    <button id="menu-btn" class="md:hidden text-3xl">&#9776;</button>
+
+    <!-- Logo on the right (larger) -->
+    <a href="#home" class="flex items-center space-x-2">
+      <img src="Aura Logo V2 Close Up.png" alt="Aura AI Logo" class="h-20 w-auto md:h-24">
+    </a>
+
+    <!-- Mobile menu button -->
+    <button id="menu-btn" class="md:hidden text-3xl ml-4">&#9776;</button>
   </div>
 </header>
 
