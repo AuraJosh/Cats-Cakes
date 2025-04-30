@@ -212,21 +212,28 @@
   });
   
 <script>
-  // Show thank you message if redirected with ?submitted=true
-  window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', function() {
+    const chatWidget = new BusinessChatWidget({
+      apiKey: 'your-api-key-here',
+      apiEndpoint: 'https://your-lambda-api-endpoint.amazonaws.com/prod/chat',
+      widgetTitle: 'Business Assistant',
+      primaryColor: '#4a90e2'
+    });
+
+    // Show thank-you message if redirected with ?submitted=true
     const params = new URLSearchParams(window.location.search);
     if (params.get('submitted') === 'true') {
       const banner = document.getElementById('thank-you-banner');
-      banner.classList.remove('hidden');
-
-      // Hide the banner after 5 seconds
-      setTimeout(() => {
-        banner.classList.add('hidden');
-      }, 5000);
+      if (banner) {
+        banner.classList.remove('hidden');
+        setTimeout(() => {
+          banner.classList.add('hidden');
+        }, 5000);
+      }
     }
   });
-
 </script>
+
 
 </body>
 
