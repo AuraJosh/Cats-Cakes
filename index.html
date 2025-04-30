@@ -172,21 +172,17 @@
 <!-- Contact Form -->
 <section id="contact" class="container mx-auto py-20 px-4">
   <h2 class="text-4xl font-bold text-center mb-8">Get In Touch</h2>
-  <form action="https://formsubmit.co/josh.witte.business@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-6">
   <form id="contact-form" action="https://formsubmit.co/josh.witte.business@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-6">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New message from Aura AI Solutions website">
-  
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message from Aura AI Solutions website">
 
-
-  <input type="text" name="name" placeholder="Name" class="w-full p-3 border rounded" required>
-  <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded" required>
-  <textarea name="message" placeholder="Message" class="w-full p-3 border rounded" rows="5" required></textarea>
-  <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded hover:bg-indigo-700">Send Message</button>
-  
-</form>
-
+    <input type="text" name="name" placeholder="Name" class="w-full p-3 border rounded" required>
+    <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded" required>
+    <textarea name="message" placeholder="Message" class="w-full p-3 border rounded" rows="5" required></textarea>
+    <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded hover:bg-indigo-700">Send Message</button>
+  </form>
 </section>
+
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-400 py-8 text-center">
@@ -199,41 +195,41 @@
 
 <!-- Scripts -->
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
-  menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-
-  // Handle form submission via AJAX
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Stop default form redirect
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        document.getElementById('thank-you-banner').classList.remove('hidden');
-        form.reset();
-      } else {
-        alert("There was an issue submitting the form. Please try again.");
-      }
-    }).catch(error => {
-      alert("Something went wrong. Please try again.");
-    });
-  });
-
-  // Initialize Chat Widget (keep this as-is)
   document.addEventListener('DOMContentLoaded', function () {
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Handle form submission via AJAX
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          document.getElementById('thank-you-banner').classList.remove('hidden');
+          form.reset();
+        } else {
+          alert("There was an issue submitting the form. Please try again.");
+        }
+      }).catch(error => {
+        alert("Something went wrong. Please try again.");
+      });
+    });
+
+    // Initialize Chat Widget
     const chatWidget = new BusinessChatWidget({
       apiKey: 'your-api-key-here',
       apiEndpoint: 'https://your-lambda-api-endpoint.amazonaws.com/prod/chat',
@@ -242,6 +238,7 @@
     });
   });
 </script>
+
 
 
 
