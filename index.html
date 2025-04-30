@@ -21,6 +21,11 @@
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
+<div id="thank-you-banner" class="hidden fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded shadow-lg z-50">
+  ✅ Thank you! Your form has been submitted. The Aura team will contact you shortly.
+</div>
+
+
 <!-- Navbar -->
 <header class="fixed w-full bg-white dark:bg-gray-900 shadow z-50">
   <div class="container mx-auto flex justify-between items-center p-4">
@@ -164,7 +169,8 @@
   <form action="https://formsubmit.co/josh.witte.business@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-6">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_subject" value="New message from Aura AI Solutions website">
-  <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+  <input type="hidden" name="_next" value="https://aurajosh.github.io/Aura-AI-Solutions/?submitted=true">
+
 
   <input type="text" name="name" placeholder="Name" class="w-full p-3 border rounded" required>
   <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded" required>
@@ -204,7 +210,24 @@
       primaryColor: '#4a90e2'
     });
   });
+  
+<script>
+  // Show thank you message if redirected with ?submitted=true
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('submitted') === 'true') {
+      const banner = document.getElementById('thank-you-banner');
+      banner.classList.remove('hidden');
+
+      // Hide the banner after 5 seconds
+      setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 5000);
+    }
+  });
+
 </script>
 
 </body>
+
 </html>
