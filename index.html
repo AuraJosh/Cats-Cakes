@@ -13,31 +13,23 @@
           colors: {
             primary: '#6366F1', // Indigo for AI tech vibe
             accent: '#8B5CF6', // Purple accent
+          },
+          keyframes: {
+            'gradient-x': {
+              '0%, 100%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' },
+            }
+          },
+          animation: {
+            'gradient-x': 'gradient-x 6s ease infinite',
+          },
+          backgroundSize: {
+            '200': '200% 200%',
           }
         }
       }
     }
   </script>
-
-<style>
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .animated-gradient {
-    background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
-  }
-</style>
-
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
@@ -70,7 +62,7 @@
 </div>
 
 <!-- Hero Section -->
-<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center text-white animated-gradient bg-gradient-to-br from-primary to-accent">
+<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center text-white bg-gradient-to-r from-primary via-accent to-primary bg-200 animate-gradient-x">
   <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Transforming Businesses with AI-Powered Solutions</h1>
   <p class="text-xl mb-8 animate-fade-in delay-300">Empowering innovation through state-of-the-art AI technologies.</p>
   <div class="flex space-x-4 animate-fade-in delay-500">
