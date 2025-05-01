@@ -11,8 +11,8 @@
       theme: {
         extend: {
           colors: {
-            primary: '#6366F1', // Indigo for AI tech vibe
-            accent: '#8B5CF6', // Purple accent
+            primary: '#6366F1',
+            accent: '#8B5CF6',
           }
         }
       }
@@ -21,6 +21,7 @@
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
+<!-- Thank You Banner -->
 <div id="thank-you-banner" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
   <div class="bg-green-600 text-white px-8 py-6 rounded shadow-lg text-center max-w-sm mx-auto">
     ✅ Thank you! Your form has been submitted.<br>The Aura team will contact you shortly.
@@ -30,18 +31,12 @@
   </div>
 </div>
 
-
-
 <!-- Navbar -->
 <header class="fixed w-full bg-white dark:bg-gray-900 shadow z-50">
   <div class="container mx-auto flex justify-between items-center p-4">
-    
-    <!-- Logo on the left (larger and prominent) -->
     <a href="#home" class="flex items-center space-x-2">
       <img src="Aura Logo V2 Close Up.png" alt="Aura AI Logo" class="h-20 w-auto md:h-24">
     </a>
-
-    <!-- Navigation Menu -->
     <nav class="hidden md:flex space-x-6">
       <a href="#home" class="hover:text-primary">Home</a>
       <a href="#services" class="hover:text-primary">Services</a>
@@ -50,8 +45,6 @@
       <a href="#blog" class="hover:text-primary">Blog</a>
       <a href="#contact" class="hover:text-primary">Contact</a>
     </nav>
-
-    <!-- Mobile menu button -->
     <button id="menu-btn" class="md:hidden text-3xl ml-4">&#9776;</button>
   </div>
 </header>
@@ -169,17 +162,20 @@
   </div>
 </section>
 
-<!-- Contact Form -->
+<!-- Contact Section -->
 <section id="contact" class="container mx-auto py-20 px-4">
   <h2 class="text-4xl font-bold text-center mb-8">Get In Touch</h2>
-  <form id="contact-form" action="https://formspree.io/f/mkgrovkp" method="POST" class="max-w-2xl mx-auto space-y-6">
-  <input type="text" name="name" placeholder="Name" class="w-full p-3 border rounded" required>
-  <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded" required>
-  <textarea name="message" placeholder="Message" class="w-full p-3 border rounded" rows="5" required></textarea>
-  <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded hover:bg-indigo-700">Send Message</button>
+  <form id="contact-form" action="https://formsubmit.co/josh.witte.business@gmail.com" method="POST" class="max-w-2xl mx-auto space-y-6">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message from Aura AI Solutions website">
+    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+    <input type="text" name="name" placeholder="Name" class="w-full p-3 border rounded" required>
+    <input type="email" name="email" placeholder="Email" class="w-full p-3 border rounded" required>
+    <textarea name="message" placeholder="Message" class="w-full p-3 border rounded" rows="5" required></textarea>
+    <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded hover:bg-indigo-700">Send Message</button>
   </form>
 </section>
-
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-400 py-8 text-center">
@@ -193,18 +189,17 @@
 <!-- Scripts -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Mobile menu toggle
+    // Mobile menu
     const menuBtn = document.getElementById('menu-btn');
     const menu = document.getElementById('menu');
     menuBtn.addEventListener('click', () => {
       menu.classList.toggle('hidden');
     });
 
-    // Handle AJAX form submission
+    // AJAX contact form
     const form = document.getElementById('contact-form');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
       const formData = new FormData(form);
 
       fetch(form.action, {
@@ -224,7 +219,7 @@
       });
     });
 
-    // Initialize Chat Widget
+    // Chat widget
     const chatWidget = new BusinessChatWidget({
       apiKey: 'your-api-key-here',
       apiEndpoint: 'https://your-lambda-api-endpoint.amazonaws.com/prod/chat',
@@ -233,6 +228,10 @@
     });
   });
 </script>
+
+<!-- Chat Widget Assets -->
+<link rel="stylesheet" href="widget.css">
+<script src="widget.js"></script>
+
 </body>
-</html>
 </html>
