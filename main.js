@@ -44,7 +44,7 @@ loader.load(
     object.rotation.set(0, 0, 0);
 
     // Try scaling to make it visible
-    object.scale.set(2, 2, 2); // You can adjust this if the model is too big/small
+    object.scale.set(50, 50, 50); // You can adjust this if the model is too big/small
 
     scene.add(object);
     console.log('Model loaded:', object);
