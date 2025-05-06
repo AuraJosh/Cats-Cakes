@@ -33,8 +33,13 @@ loader.load(
     console.log('Model loaded:', object);
   },
   function (xhr) {
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-  },
+  if (xhr.lengthComputable) {
+    console.log((xhr.loaded / xhr.total * 100).toFixed(2) + '% loaded');
+  } else {
+    console.log('Loading...');
+  }
+},
+
   function (error) {
     console.error('An error happened while loading the model:', error);
   }
