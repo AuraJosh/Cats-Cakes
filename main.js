@@ -20,18 +20,15 @@ let object;
 // OrbitControls allow the camera to move around the scene
 let controls;
 
-// Set which object to render
-let objToRender = 'token';
-
 // Instantiate a loader for the .glb file
 const loader = new GLTFLoader();
 
-// Load the file
+// Load the token.glb file from the same directory
 loader.load(
-  `${objToRender}.glb`,
+  'token.glb',
   function (gltf) {
     object = gltf.scene;
-    object.scale.set(0.5, 0.5, 0.5); // Scale if needed
+    object.scale.set(0.5, 0.5, 0.5); // Adjust scale if needed
     scene.add(object);
     console.log('Model loaded:', object);
   },
@@ -49,7 +46,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 // Set the camera position
-camera.position.z = 5; // Adjust as needed depending on model size
+camera.position.z = 5; // Adjust depending on model size
 
 // Add lights to the scene
 const topLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -66,7 +63,6 @@ controls = new OrbitControls(camera, renderer.domElement);
 // Render the scene
 function animate() {
   requestAnimationFrame(animate);
-
   renderer.render(scene, camera);
 }
 animate();
