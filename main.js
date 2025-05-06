@@ -28,7 +28,7 @@ const loader = new GLTFLoader();
 
 // Load the file
 loader.load(
-  `./models/${objToRender}.glb`,
+  `${objToRender}.glb`,
   function (gltf) {
     object = gltf.scene;
     object.scale.set(0.5, 0.5, 0.5); // Scale if needed
