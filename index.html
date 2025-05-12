@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>3D Token Viewer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="data:,">
-    <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-  }
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Data Entry</title>
+</head>
+<body>
+  <h2>Enter Customer Details</h2>
+  <form id="customer-form">
+    <label>Company Name: <input type="text" name="companyName" required></label><br><br>
+    <label>Business Type: <input type="text" name="businessType"></label><br><br>
+    <label>Location: <input type="text" name="location"></label><br><br>
+    <label>First Name: <input type="text" name="firstName"></label><br><br>
+    <label>Surname: <input type="text" name="surname"></label><br><br>
+    <label>Email: <input type="email" name="email"></label><br><br>
+    <label>Phone Number: <input type="tel" name="phoneNumber"></label><br><br>
+    <label>Interest Level:
+      <select name="interestLevel">
+        <option value="Hot">Hot</option>
+        <option value="Warm">Warm</option>
+        <option value="Cold">Cold</option>
+      </select>
+    </label><br><br>
+    <label>Status:
+      <select name="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Prospect">Prospect</option>
+        <option value="Customer">Customer</option>
+      </select>
+    </label><br><br>
+    <label>First Contacted: <input type="date" name="firstContacted"></label><br><br>
+    <label>Last Contacted: <input type="date" name="lastContacted"></label><br><br>
 
-  #container3D {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-  }
-</style>
+    <button type="submit">Submit</button>
+  </form>
 
-  </head>
-  <body>
-    <header>
-      <h1>3D Token Model</h1>
-    </header>
+  <p id="status"></p>
 
-    <main>
-      <div id="container3D"></div>
-    </main>
+  <script>
+    document.getElementById('customer-form').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    <script type="module" src="main.js"></script>
-  </body>
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      fetch('https://script.google.com/macros/s/AKfycbyqGLFSaAkguYOGUcstgyN6DCFuICVZgwJhIVk5f9kV1dOtk4WDoZ-eZRJGl9DE_88Hhw/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('status').textContent = 'Customer saved!';
+        this.reset();
+      })
+      .catch(error => {
+        document.getElementById('status').textContent = 'Error saving customer.';
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
 </html>
