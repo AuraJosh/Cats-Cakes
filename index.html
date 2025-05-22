@@ -133,45 +133,46 @@
 <body>
     <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <div class="mr-2">
-                        <i class="fas fa-cat text-3xl text-pink-400"></i>
-                    </div>
-                    <a href="#" class="text-2xl font-bold text-gray-800 hover:text-pink-500" onclick="showPage('home')">Cat's Cakes</a>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500 active" onclick="showPage('home')">Home</a>
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a>
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('services')">Services</a>
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a>
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a>
-                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a>
-                </div>
-                
-                <div class="md:hidden">
-                    <button class="outline-none mobile-menu-button" onclick="toggleMenu()">
-                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <div class="mr-2">
+              <i class="fas fa-cat text-3xl text-pink-400"></i>
             </div>
-            
-            <div class="hidden mobile-menu">
-                <ul class="mt-4 space-y-4">
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('home')">Home</a></li>
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a></li>
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('services')">Services</a></li>
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a></li>
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a></li>
-                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a></li>
-                </ul>
-            </div>
+            <a href="#" class="text-2xl font-bold text-gray-800 hover:text-pink-500" onclick="showPage('home')">Cat's Cakes</a>
+          </div>
+          
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#" class="nav-link text-gray-800 hover:text-pink-500 active" onclick="showPage('home')">Home</a>
+            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a>
+            <a href="services.html" class="nav-link text-gray-800 hover:text-pink-500">Services</a> <!-- External link -->
+            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a>
+            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a>
+            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a>
+          </div>
+          
+          <div class="md:hidden">
+            <button class="outline-none mobile-menu-button" onclick="toggleMenu()">
+              <svg class="w-6 h-6 text-gray-800" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div>
+        
+        <div class="hidden mobile-menu">
+          <ul class="mt-4 space-y-4">
+            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a></li>
+            <li><a href="services.html" class="block px-2 py-1 text-gray-800 hover:text-pink-500">Services</a></li> <!-- External link -->
+            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a></li>
+            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a></li>
+            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
+
 
     <!-- Home Page -->
     <div id="home" class="page active-page">
