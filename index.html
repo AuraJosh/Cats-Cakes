@@ -1,65 +1,439 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Customer Data Entry</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat's Cakes - Purr-fectly Delicious Treats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #FF9AA2;
+            --secondary: #FFB7B2;
+            --accent: #FFDAC1;
+            --light: #E2F0CB;
+            --dark: #B5EAD7;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background-color: #FFF9F5;
+            color: #5A3E36;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .active:after {
+            width: 100%;
+        }
+        
+        .cake-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cake-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .floating-cat {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #FFF9F5 0%, #FFEEEE 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 162, 0.4);
+        }
+        
+        .cat-paw {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .cat-paw:before, .cat-paw:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .cat-paw:before {
+            top: -10px;
+            left: -5px;
+        }
+        
+        .cat-paw:after {
+            top: -10px;
+            right: -5px;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 154, 162, 0.2);
+        }
+    </style>
 </head>
 <body>
-  <h2>Enter Customer Details</h2>
-  <form id="customer-form">
-    <label>Company Name: <input type="text" name="companyName" required></label><br><br>
-    <label>Business Type: <input type="text" name="businessType"></label><br><br>
-    <label>Location: <input type="text" name="location"></label><br><br>
-    <label>First Name: <input type="text" name="firstName"></label><br><br>
-    <label>Surname: <input type="text" name="surname"></label><br><br>
-    <label>Email: <input type="email" name="email"></label><br><br>
-    <label>Phone Number: <input type="tel" name="phoneNumber"></label><br><br>
-    <label>Interest Level:
-      <select name="interestLevel">
-        <option value="Hot">Hot</option>
-        <option value="Warm">Warm</option>
-        <option value="Cold">Cold</option>
-      </select>
-    </label><br><br>
-    <label>Status:
-      <select name="status">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-        <option value="Prospect">Prospect</option>
-        <option value="Customer">Customer</option>
-      </select>
-    </label><br><br>
-    <label>First Contacted: <input type="date" name="firstContacted"></label><br><br>
-    <label>Last Contacted: <input type="date" name="lastContacted"></label><br><br>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="mr-2">
+                        <i class="fas fa-cat text-3xl text-pink-400"></i>
+                    </div>
+                    <a href="#" class="text-2xl font-bold text-gray-800 hover:text-pink-500" onclick="showPage('home')">Cat's Cakes</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500 active" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a>
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('services')">Services</a>
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a>
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a>
+                    <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="outline-none mobile-menu-button" onclick="toggleMenu()">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hidden mobile-menu">
+                <ul class="mt-4 space-y-4">
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('services')">Services</a></li>
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a></li>
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a></li>
+                    <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <button type="submit">Submit</button>
-  </form>
+    <!-- Home Page -->
+    <div id="home" class="page active-page">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-r from-pink-100 to-yellow-50 py-20">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">Artisan Cakes for Every Occasion</h1>
+                    <p class="text-xl text-gray-600 mb-8">Handcrafted with premium ingredients and artistic flair. Our cakes are as delightful as they are beautiful!</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-primary text-white font-bold py-3 px-6 rounded-full" onclick="showPage('pricing')">View Our Menu</button>
+                        <button class="border-2 border-pink-400 text-pink-500 font-bold py-3 px-6 rounded-full hover:bg-pink-50 transition" onclick="showPage('contact')">Order Now</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cat themed cake" class="rounded-lg shadow-xl w-full max-w-md mx-auto floating-cat">
+                    <div class="absolute -bottom-5 -left-5 bg-pink-200 p-3 rounded-full">
+                        <i class="fas fa-paw text-pink-600 text-2xl"></i>
+                    </div>
+                    <div class="absolute -top-5 -right-5 bg-yellow-200 p-3 rounded-full">
+                        <i class="fas fa-birthday-cake text-yellow-600 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <p id="status"></p>
+        <!-- Featured Products -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Signature Creations</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-pink-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-birthday-cake text-pink-500 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Birthday Cakes</h3>
+                        <p class="text-gray-600 mb-4">Celebrate in style with our custom birthday cakes featuring elegant designs and delicious flavors.</p>
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('pricing')">From $35</button>
+                    </div>
+                    
+                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-yellow-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cookie text-yellow-500 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cupcakes</h3>
+                        <p class="text-gray-600 mb-4">Purr-fectly portioned treats with cute cat toppers and delicious flavors.</p>
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('pricing')">From $2.50 each</button>
+                    </div>
+                    
+                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="bg-blue-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-utensils text-blue-500 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Custom Designs</h3>
+                        <p class="text-gray-600 mb-4">Turn your feline fantasy into edible art with our custom cake service.</p>
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('contact')">Get a Quote</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script>
-    document.getElementById('customer-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+        <!-- Testimonials -->
+        <section class="py-16 bg-pink-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="testimonial-card p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink-200 p-2 rounded-full mr-4">
+                                <i class="fas fa-user text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Sarah M.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"The cat-shaped cake for my daughter's birthday was absolutely purr-fect! Not only adorable but delicious too. Will definitely order again!"</p>
+                    </div>
+                    
+                    <div class="testimonial-card p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink-200 p-2 rounded-full mr-4">
+                                <i class="fas fa-user text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">James L.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"I ordered cupcakes with little cat faces for my office party and they were a huge hit! The vanilla bean flavor was exceptional."</p>
+                    </div>
+                    
+                    <div class="testimonial-card p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink-200 p-2 rounded-full mr-4">
+                                <i class="fas fa-user text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Emily R.</h4>
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"The attention to detail on my cat's birthday cake (yes, I threw my cat a party) was amazing. The cake was moist and flavorful too!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      const formData = new FormData(this);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+        <!-- Call to Action -->
+        <section class="py-16 bg-gradient-to-r from-pink-400 to-pink-300 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Order Your Purr-fect Cake?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Whether it's a birthday, anniversary, or just because you love cats (and cake), we've got you covered!</p>
+                <button class="bg-white text-pink-500 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition" onclick="showPage('contact')">Get in Touch</button>
+            </div>
+        </section>
+    </div>
 
-      fetch('https://script.google.com/macros/s/AKfycbyqGLFSaAkguYOGUcstgyN6DCFuICVZgwJhIVk5f9kV1dOtk4WDoZ-eZRJGl9DE_88Hhw/exec', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('status').textContent = 'Customer saved!';
-        this.reset();
-      })
-      .catch(error => {
-        document.getElementById('status').textContent = 'Error saving customer.';
-        console.error('Error:', error);
-      });
-    });
-  </script>
-</body>
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Story</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center mb-16">
+                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cat baker" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">From Passion to Profession</h3>
+                        <p class="text-gray-600 mb-4">Cat's Cakes began in 2015 when founder Catherine combined her two passions: baking and artistic design. What started as a hobby making custom cakes for friends quickly grew into a full-fledged bakery.</p>
+                        <p class="text-gray-600 mb-4">Today, our team of talented bakers creates edible masterpieces that celebrate life's sweetest moments. Every cake is crafted with precision, using only the finest ingredients and innovative techniques.</p>
+                        <div class="flex items-center mt-6">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-paw text-pink-500"></i>
+                            </div>
+                            <p class="text-gray-600 italic">"Our mission is to make the world a sweeter place, one cat cake at a time."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-pink-50 p-8 rounded-lg shadow-inner mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Our Baking Philosophy</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-heart text-pink-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Made with Love</h4>
+                            <p class="text-gray-600">Every creation is baked with passion and care, just like you'd make at home.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-leaf text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Quality Ingredients</h4>
+                            <p class="text-gray-600">We use only the finest, freshest ingredients with no artificial flavors.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                                <i class="fas fa-cat text-orange-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Feline-Inspired</h4>
+                            <p class="text-gray-600">Each design is inspired by our love for cats and their unique personalities.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Meet Our Team</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Whiskers" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <h4 class="font-bold text-gray-800 mb-1">Catherine</h4>
+                            <p class="text-pink-500 text-sm mb-2">Founder & Head Baker</p>
+                            <p class="text-gray-600 text-sm">Award-winning baker with 15 years of experience. Specializes in intricate sugar flowers and fondant designs.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mittens" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <h4 class="font-bold text-gray-800 mb-1">Mittens</h4>
+                            <p class="text-pink-500 text-sm mb-2">Decorating Artist</p>
+                            <p class="text-gray-600 text-sm">Creates the most adorable cat faces you've ever seen on cakes. Loves watercolor effects.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Paws" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <h4 class="font-bold text-gray-800 mb-1">Paws</h4>
+                            <p class="text-pink-500 text-sm mb-2">Pastry Chef</p>
+                            <p class="text-gray-600 text-sm">Master of flavors and textures. Developed our signature "Catnip Chocolate" cake.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Boots" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <h4 class="font-bold text-gray-800 mb-1">Boots</h4>
+                            <p class="text-pink-500 text-sm mb-2">Customer Meow-nager</p>
+                            <p class="text-gray-600 text-sm">Makes sure every order is purr-fect and handles all your questions with a smile.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-16 bg-pink-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Giving Back to Our Feline Friends</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mb-8">At Cat's Cakes, we believe in supporting our furry friends in need. That's why we donate 5% of all profits to local cat shelters and rescue organizations. We also host regular "Bake for a Cause" events where customers can purchase special treats with 100% of proceeds going to cat welfare.</p>
+                <button class="btn-primary text-white font-bold py-3 px-6 rounded-full" onclick="showPage('contact')">Learn About Our Next Charity Event</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">From custom cakes to baking classes, we offer a variety of services to satisfy your sweet tooth and feline fantasies.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                    <div class="bg-pink-50 p-8 rounded-lg shadow-md">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-pink-200 p-3 rounded-full mr-4">
+                                <i class="fas fa-birthday-cake text-pink-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">Custom Cake Design</h3>
+                                <p class="text-gray-600">Work with our talented designers to create a one-of-a-kind cake for your special occasion. From elegant wedding cakes to fun birthday creations, we'll bring your vision to life with edible artistry.</p>
+                            </div>
+                        </div>
+                        <ul class="pl-4 text-gray-600 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Consultation with our cake designer</li>
+                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Digital sketch of your design</li>
+                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Choice of flavors and fillings</li>
+
 </html>
