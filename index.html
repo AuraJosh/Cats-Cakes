@@ -1,440 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat's Cakes - Purr-fectly Delicious Treats</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Aura AI Solutions - Intelligent AI Chatbots for Business</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Define a modern, clean font stack */
         :root {
-            --primary: #FF9AA2;
-            --secondary: #FFB7B2;
-            --accent: #FFDAC1;
-            --light: #E2F0CB;
-            --dark: #B5EAD7;
+            --accent-color: #9f49f6; /* A vibrant purple */
         }
-        
+
+        /*
+         * This custom CSS ensures the background gradients are always visible
+         * by applying them directly to the body.
+         */
         body {
-            font-family: 'Comic Neue', cursive, sans-serif;
-            background-color: #FFF9F5;
-            color: #5A3E36;
-            transition: all 0.3s ease;
+            /* Set the base background color */
+            background-color: #ffffff;
+            /* Add the dual gradient and grid textures using multiple background images */
+            background-image:
+                linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+                radial-gradient(circle 500px at 20% 100%, rgba(139,92,246,0.15), transparent),
+                radial-gradient(circle 500px at 100% 80%, rgba(59,130,246,0.15), transparent);
+            /* Set the size for each background image layer */
+            background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
+            color: #1f2937; /* Dark gray for readability on light background */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link:after {
+
+        /* Custom animation for the logo typing effect */
+        .typing-animation::after {
             content: '';
-            position: absolute;
+            animation: typing-effect 2.5s steps(20, end) infinite,
+                       blink-caret 0.75s step-end infinite;
+            display: inline-block;
+            vertical-align: bottom;
             width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid var(--accent-color);
         }
-        
-        .nav-link:hover:after {
-            width: 100%;
+
+        @keyframes typing-effect {
+            from { width: 0; }
+            to { width: 100%; }
         }
-        
-        .active:after {
-            width: 100%;
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent-color); }
         }
-        
-        .cake-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .cake-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .floating-cat {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .active-page {
-            display: block;
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, #FFF9F5 0%, #FFEEEE 100%);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 154, 162, 0.4);
-        }
-        
-        .cat-paw {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto;
-        }
-        
-        .cat-paw:before, .cat-paw:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary);
-            border-radius: 50%;
-        }
-        
-        .cat-paw:before {
-            top: -10px;
-            left: -5px;
-        }
-        
-        .cat-paw:after {
-            top: -10px;
-            right: -5px;
-        }
-        
-        .footer-link:hover {
-            color: var(--primary);
-        }
-        
-        .form-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 154, 162, 0.2);
+
+        /* Parallax effect for Section 2 */
+        .parallax-bg {
+            background-image: url('https://placehold.co/1920x1080/f3f4f6/8b5cf6?text=Technology+Background'); /* Placeholder for a light-themed image */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="mr-2">
-              <i class="fas fa-cat text-3xl text-pink-400"></i>
+<body class="antialiased leading-relaxed">
+
+    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
+                <span class="typing-animation overflow-hidden whitespace-nowrap">Aura AI Solutions</span>
+                <span class="w-1 h-6 ml-2 bg-purple-600 animate-pulse group-hover:bg-purple-400 transition-colors duration-300"></span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
+                <a href="#services" class="hover:text-purple-600 transition-colors duration-300">Services</a>
+                <a href="#pricing" class="hover:text-purple-600 transition-colors duration-300">Pricing</a>
+                <a href="#contact" class="hover:text-purple-600 transition-colors duration-300">Contact</a>
             </div>
-            <a href="#" class="text-2xl font-bold text-gray-800 hover:text-pink-500" onclick="showPage('home')">Cat's Cakes</a>
-          </div>
-          
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="#" class="nav-link text-gray-800 hover:text-pink-500 active" onclick="showPage('home')">Home</a>
-            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a>
-            <a href="services.html" class="nav-link text-gray-800 hover:text-pink-500">Services</a> <!-- External link -->
-            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a>
-            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a>
-            <a href="#" class="nav-link text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a>
-          </div>
-          
-          <div class="md:hidden">
-            <button class="outline-none mobile-menu-button" onclick="toggleMenu()">
-              <svg class="w-6 h-6 text-gray-800" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
+        </nav>
+    </header>
+
+    <main id="hero" class="min-h-screen flex items-center justify-center p-8 text-center">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
+                <span class="block">Transform Your Business with</span>
+                <span class="block text-purple-600">Intelligent AI Chat.</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
         </div>
-        
-        <div class="hidden mobile-menu">
-          <ul class="mt-4 space-y-4">
-            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('home')">Home</a></li>
-            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('about')">About</a></li>
-            <li><a href="services.html" class="block px-2 py-1 text-gray-800 hover:text-pink-500">Services</a></li> <!-- External link -->
-            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('pricing')">Pricing</a></li>
-            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('gallery')">Gallery</a></li>
-            <li><a href="#" class="block px-2 py-1 text-gray-800 hover:text-pink-500" onclick="showPage('contact')">Contact</a></li>
-          </ul>
+    </main>
+
+    <section id="services" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Empower Your Operations.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
         </div>
-      </div>
-    </nav>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Customer Support</h3>
+                <p class="text-gray-700">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
+            </div>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Lead Generation</h3>
+                <p class="text-gray-700">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
+            </div>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Operational Efficiency</h3>
+                <p class="text-gray-700">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
+            </div>
+        </div>
+        <div class="flex justify-center pt-8">
+            <a href="#features" class="inline-block py-4 px-8 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Explore Features</a>
+        </div>
+    </section>
 
+    <section class="h-96 md:h-[600px] flex items-center justify-center text-center text-gray-900 parallax-bg">
+        <div class="p-8 bg-white/70 backdrop-blur-md rounded-lg shadow-xl max-w-3xl space-y-4">
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Redefine Customer Experience.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">Our AI agents act as the first point of contact, seamlessly guiding visitors from initial query to qualified lead or resolved technical support ticket.</p>
+        </div>
+    </section>
 
-    <!-- Home Page -->
-    <div id="home" class="page active-page">
-        <!-- Hero Section -->
-        <section class="relative bg-gradient-to-r from-pink-100 to-yellow-50 py-20">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">Artisan Cakes for Every Occasion</h1>
-                    <p class="text-xl text-gray-600 mb-8">Handcrafted with premium ingredients and artistic flair. Our cakes are as delightful as they are beautiful!</p>
-                    <div class="flex space-x-4">
-                        <button class="btn-primary text-white font-bold py-3 px-6 rounded-full" onclick="showPage('pricing')">View Our Menu</button>
-                        <button class="border-2 border-pink-400 text-pink-500 font-bold py-3 px-6 rounded-full hover:bg-pink-50 transition" onclick="showPage('contact')">Order Now</button>
-                    </div>
+    <section id="features" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Key Features at a Glance.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-purple-600">Context-Aware AI</h3>
+                <p class="text-gray-700">Trained on your business data for highly relevant and accurate responses.</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-purple-600">Multilingual Support</h3>
+                <p class="text-gray-700">Engage a global audience with support for multiple languages out of the box.</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-purple-600">Real-time Analytics</h3>
+                <p class="text-gray-700">Gain instant insights into conversations and user behavior with our intuitive dashboard.</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-purple-600">Seamless Integration</h3>
+                <p class="text-gray-700">Effortlessly integrate the chatbot into any website with a single line of code.</p>
+            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-purple-600">Customizable UI & Tone</h3>
+                <p class="text-gray-700">Match the chatbot's look and personality to your brand identity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-gray-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">The Aura AI Bespoke Analytics Suite.</h2>
+                <p class="text-lg text-gray-700">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex items-center space-x-2">
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
+                        <span>Save countless hours by identifying common queries instantly.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
+                        <span>Reduce operational costs with automated support insights.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
+                        <span>Personalize support by understanding your users' needs at scale.</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <img src="https://placehold.co/800x600/f3f4f6/8b5cf6?text=Analytics+Dashboard" alt="Placeholder image of a modern analytics dashboard" class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Simple & Transparent Pricing.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-end">
+            <div class="bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center">
+                <h3 class="text-3xl font-bold text-gray-900">Essential</h3>
+                <p class="text-gray-600">For small teams getting started.</p>
+                <div class="space-y-2 text-gray-700">
+                    <p>1,000 monthly messages</p>
+                    <p>1 chatbot instance</p>
+                    <p>Aura AI branding</p>
+                    <p>Basic analytics suite</p>
+                    <p>Support within 7 business days</p>
                 </div>
-                <div class="md:w-1/2 relative">
-                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cat themed cake" class="rounded-lg shadow-xl w-full max-w-md mx-auto floating-cat">
-                    <div class="absolute -bottom-5 -left-5 bg-pink-200 p-3 rounded-full">
-                        <i class="fas fa-paw text-pink-600 text-2xl"></i>
-                    </div>
-                    <div class="absolute -top-5 -right-5 bg-yellow-200 p-3 rounded-full">
-                        <i class="fas fa-birthday-cake text-yellow-600 text-2xl"></i>
-                    </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-gray-400 rounded-full hover:bg-gray-500 transition-colors duration-300">Start for Free</a>
+            </div>
+
+            <div class="bg-white border border-purple-600 rounded-xl p-8 space-y-6 flex flex-col items-center text-center shadow-lg transform scale-105">
+                <h3 class="text-3xl font-bold text-gray-900">Elite</h3>
+                <p class="text-gray-600">For growing businesses.</p>
+                <div class="space-y-2 text-gray-700">
+                    <p>5,000 monthly messages</p>
+                    <p>3 chatbot instances</p>
+                    <p>Color customization</p>
+                    <p>Unlocked analytics</p>
+                    <p>Priority support</p>
+                </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Choose Elite</a>
+            </div>
+
+            <div class="bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center">
+                <h3 class="text-3xl font-bold text-gray-900">Executive</h3>
+                <p class="text-gray-600">For large-scale operations.</p>
+                <div class="space-y-2 text-gray-700">
+                    <p>Unlimited usage</p>
+                    <p>White-label support</p>
+                    <p>Custom personalities</p>
+                    <p>Comprehensive analytics</p>
+                    <p>Dedicated 24-hour response</p>
+                </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-gray-400 rounded-full hover:bg-gray-500 transition-colors duration-300">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 max-w-7xl mx-auto space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">What's Next for Aura AI?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">AI Training on Entire Websites</h3>
+                    <p class="text-gray-700">Scan and train the AI on all content from your site for even greater accuracy.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Featured Products -->
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Signature Creations</h2>
-                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-pink-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-birthday-cake text-pink-500 text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Birthday Cakes</h3>
-                        <p class="text-gray-600 mb-4">Celebrate in style with our custom birthday cakes featuring elegant designs and delicious flavors.</p>
-                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('pricing')">From $35</button>
-                    </div>
-                    
-                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-yellow-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-cookie text-yellow-500 text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cupcakes</h3>
-                        <p class="text-gray-600 mb-4">Purr-fectly portioned treats with cute cat toppers and delicious flavors.</p>
-                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('pricing')">From $2.50 each</button>
-                    </div>
-                    
-                    <div class="cake-card bg-white p-6 rounded-lg shadow-md text-center">
-                        <div class="bg-blue-100 p-4 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-utensils text-blue-500 text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Custom Designs</h3>
-                        <p class="text-gray-600 mb-4">Turn your feline fantasy into edible art with our custom cake service.</p>
-                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-full text-sm" onclick="showPage('contact')">Get a Quote</button>
-                    </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Smart Scheduling</h3>
+                    <p class="text-gray-700">Allow the chatbot to book appointments directly with your clients.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section class="py-16 bg-pink-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
-                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="testimonial-card p-6 rounded-lg shadow-md">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-pink-200 p-2 rounded-full mr-4">
-                                <i class="fas fa-user text-pink-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Sarah M.</h4>
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"The cat-shaped cake for my daughter's birthday was absolutely purr-fect! Not only adorable but delicious too. Will definitely order again!"</p>
-                    </div>
-                    
-                    <div class="testimonial-card p-6 rounded-lg shadow-md">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-pink-200 p-2 rounded-full mr-4">
-                                <i class="fas fa-user text-pink-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">James L.</h4>
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"I ordered cupcakes with little cat faces for my office party and they were a huge hit! The vanilla bean flavor was exceptional."</p>
-                    </div>
-                    
-                    <div class="testimonial-card p-6 rounded-lg shadow-md">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-pink-200 p-2 rounded-full mr-4">
-                                <i class="fas fa-user text-pink-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Emily R.</h4>
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"The attention to detail on my cat's birthday cake (yes, I threw my cat a party) was amazing. The cake was moist and flavorful too!"</p>
-                    </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">CRM Integrations</h3>
+                    <p class="text-gray-700">Sync data and conversations directly with your existing CRM platforms.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="py-16 bg-gradient-to-r from-pink-400 to-pink-300 text-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-6">Ready to Order Your Purr-fect Cake?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">Whether it's a birthday, anniversary, or just because you love cats (and cake), we've got you covered!</p>
-                <button class="bg-white text-pink-500 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition" onclick="showPage('contact')">Get in Touch</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page">
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Story</h2>
-                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row items-center mb-16">
-                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cat baker" class="rounded-lg shadow-xl w-full">
-                    </div>
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">From Passion to Profession</h3>
-                        <p class="text-gray-600 mb-4">Cat's Cakes began in 2015 when founder Catherine combined her two passions: baking and artistic design. What started as a hobby making custom cakes for friends quickly grew into a full-fledged bakery.</p>
-                        <p class="text-gray-600 mb-4">Today, our team of talented bakers creates edible masterpieces that celebrate life's sweetest moments. Every cake is crafted with precision, using only the finest ingredients and innovative techniques.</p>
-                        <div class="flex items-center mt-6">
-                            <div class="bg-pink-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-paw text-pink-500"></i>
-                            </div>
-                            <p class="text-gray-600 italic">"Our mission is to make the world a sweeter place, one cat cake at a time."</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-pink-50 p-8 rounded-lg shadow-inner mb-16">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Our Baking Philosophy</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
-                                <i class="fas fa-heart text-pink-500 text-xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">Made with Love</h4>
-                            <p class="text-gray-600">Every creation is baked with passion and care, just like you'd make at home.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
-                                <i class="fas fa-leaf text-green-500 text-xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">Quality Ingredients</h4>
-                            <p class="text-gray-600">We use only the finest, freshest ingredients with no artificial flavors.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
-                                <i class="fas fa-cat text-orange-500 text-xl"></i>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2">Feline-Inspired</h4>
-                            <p class="text-gray-600">Each design is inspired by our love for cats and their unique personalities.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Meet Our Team</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Whiskers" class="w-24 h-24 rounded-full mx-auto mb-4">
-                            <h4 class="font-bold text-gray-800 mb-1">Catherine</h4>
-                            <p class="text-pink-500 text-sm mb-2">Founder & Head Baker</p>
-                            <p class="text-gray-600 text-sm">Award-winning baker with 15 years of experience. Specializes in intricate sugar flowers and fondant designs.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mittens" class="w-24 h-24 rounded-full mx-auto mb-4">
-                            <h4 class="font-bold text-gray-800 mb-1">Mittens</h4>
-                            <p class="text-pink-500 text-sm mb-2">Decorating Artist</p>
-                            <p class="text-gray-600 text-sm">Creates the most adorable cat faces you've ever seen on cakes. Loves watercolor effects.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Paws" class="w-24 h-24 rounded-full mx-auto mb-4">
-                            <h4 class="font-bold text-gray-800 mb-1">Paws</h4>
-                            <p class="text-pink-500 text-sm mb-2">Pastry Chef</p>
-                            <p class="text-gray-600 text-sm">Master of flavors and textures. Developed our signature "Catnip Chocolate" cake.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Boots" class="w-24 h-24 rounded-full mx-auto mb-4">
-                            <h4 class="font-bold text-gray-800 mb-1">Boots</h4>
-                            <p class="text-pink-500 text-sm mb-2">Customer Meow-nager</p>
-                            <p class="text-gray-600 text-sm">Makes sure every order is purr-fect and handles all your questions with a smile.</p>
-                        </div>
-                    </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Omnichannel Support</h3>
+                    <p class="text-gray-700">Extend your AI's presence to social media, messaging apps, and more.</p>
                 </div>
             </div>
-        </section>
-        
-        <section class="py-16 bg-pink-100">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">Giving Back to Our Feline Friends</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto mb-8">At Cat's Cakes, we believe in supporting our furry friends in need. That's why we donate 5% of all profits to local cat shelters and rescue organizations. We also host regular "Bake for a Cause" events where customers can purchase special treats with 100% of proceeds going to cat welfare.</p>
-                <button class="btn-primary text-white font-bold py-3 px-6 rounded-full" onclick="showPage('contact')">Learn About Our Next Charity Event</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- Services Page -->
-    <div id="services" class="page">
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Services</h2>
-                    <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">From custom cakes to baking classes, we offer a variety of services to satisfy your sweet tooth and feline fantasies.</p>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Real-Time Agents</h3>
+                    <p class="text-gray-700">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-                    <div class="bg-pink-50 p-8 rounded-lg shadow-md">
-                        <div class="flex items-start mb-4">
-                            <div class="bg-pink-200 p-3 rounded-full mr-4">
-                                <i class="fas fa-birthday-cake text-pink-600"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800 mb-2">Custom Cake Design</h3>
-                                <p class="text-gray-600">Work with our talented designers to create a one-of-a-kind cake for your special occasion. From elegant wedding cakes to fun birthday creations, we'll bring your vision to life with edible artistry.</p>
-                            </div>
-                        </div>
-                        <ul class="pl-4 text-gray-600 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Consultation with our cake designer</li>
-                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Digital sketch of your design</li>
-                            <li class="flex items-center"><i class="fas fa-paw text-pink-400 mr-2 text-xs"></i> Choice of flavors and fillings</li>
+            </div>
+        </div>
+    </section>
 
+    <footer id="contact" class="bg-gray-100 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-gray-500 space-y-4 md:space-y-0">
+            <p>&copy; 2025 Aura AI Solutions. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
