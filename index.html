@@ -33,13 +33,13 @@
         /* Custom animation for the logo typing effect */
         .typing-text {
             overflow: hidden;
-            border-right: 2px solid var(--accent-color);
             white-space: nowrap;
             animation: typing-effect 2.5s steps(20, end) forwards;
         }
 
         .typing-text::after {
             content: '';
+            border-right: 2px solid var(--accent-color);
             animation: blink-caret 0.75s step-end infinite;
             display: inline-block;
             width: 0;
