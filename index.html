@@ -31,16 +31,25 @@
         }
 
         /* Custom animation for the logo typing effect */
-        .typing-animation::after {
+        .typing-text {
+            overflow: hidden;
+            border-right: 2px solid var(--accent-color);
+            white-space: nowrap;
+            animation: typing-effect 2.5s steps(20, end) forwards;
+        }
+
+        .typing-text::after {
             content: '';
-            animation: typing-effect 2.5s steps(20, end) infinite,
-                       blink-caret 0.75s step-end infinite;
+            animation: blink-caret 0.75s step-end infinite;
             display: inline-block;
-            vertical-align: bottom;
             width: 0;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid var(--accent-color);
+        }
+
+        .typing-text.finished::after {
+            animation: none;
+            border-right: none;
         }
 
         @keyframes typing-effect {
@@ -94,8 +103,7 @@
     <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
         <nav class="flex justify-between items-center max-w-7xl mx-auto">
             <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
-                <span class="typing-animation overflow-hidden whitespace-nowrap">Aura AI Solutions</span>
-                <span class="w-1 h-6 ml-2 bg-purple-600 animate-pulse group-hover:bg-purple-400 transition-colors duration-300"></span>
+                <span class="typing-text">Aura AI Solutions</span>
             </a>
             <div class="hidden md:flex space-x-8">
                 <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
@@ -357,7 +365,15 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector('.typing-text');
+            if (typingText) {
+                setTimeout(() => {
+                    typingText.classList.add('finished');
+                }, 2500); // 2.5 seconds to finish typing
+            }
+        });
+    </script>
 </body>
 </html>
-
-
