@@ -63,6 +63,23 @@
             50% { border-color: var(--accent-color); }
         }
 
+        /* New Fade-In Animation for "Wow Factor" */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
         /* Parallax effect for Section 2 */
         .parallax-bg {
             background-image: url('https://placehold.co/1920x1080/f3f4f6/8b5cf6?text=Technology+Background'); /* Placeholder for a light-themed image */
@@ -116,7 +133,7 @@
     </header>
 
     <main id="hero" class="min-h-screen flex items-center justify-center p-8 text-center">
-        <div class="max-w-4xl mx-auto space-y-8">
+        <div class="max-w-4xl mx-auto space-y-8 fade-in">
             <model-viewer
                 src="token.glb"
                 alt="Aura AI token 3D model"
@@ -128,7 +145,7 @@
                 autoplay
                 orientation="90deg 90deg 90deg" style="width: 250px; height: 250px; margin: 0 auto; display: block;"
             ></model-viewer>
-    
+        
             <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
                 <span class="block">Transform Your Business with</span>
                 <span class="block text-purple-600">Intelligent AI Chat.</span>
@@ -395,14 +412,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
