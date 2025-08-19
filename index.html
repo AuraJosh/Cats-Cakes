@@ -32,24 +32,28 @@
 
         /* Custom animation for the logo typing effect */
         .typing-text {
+            display: inline-block;
             overflow: hidden;
             white-space: nowrap;
+            width: 0;
             animation: typing-effect 2.5s steps(20, end) forwards;
         }
-
-        .typing-text::after {
-            content: '';
-            border-right: 2px solid var(--accent-color);
-            animation: blink-caret 0.75s step-end infinite;
-            display: inline-block;
-            width: 0;
-            white-space: nowrap;
-            overflow: hidden;
+        
+        .typing-text-container {
+            position: relative;
         }
 
-        .typing-text.finished::after {
-            animation: none;
-            border-right: none;
+        .typing-text-container::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation: blink-caret 0.75s step-end infinite;
+            color: var(--accent-color);
+        }
+
+        .typing-text-container.finished::after {
+            display: none;
         }
 
         @keyframes typing-effect {
@@ -58,8 +62,8 @@
         }
 
         @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--accent-color); }
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
         }
 
         /* Parallax effect for Section 2 */
@@ -103,7 +107,9 @@
     <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
         <nav class="flex justify-between items-center max-w-7xl mx-auto">
             <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
-                <span class="typing-text">Aura AI Solutions</span>
+                <span class="typing-text-container">
+                    <span class="typing-text">Aura AI Solutions</span>
+                </span>
             </a>
             <div class="hidden md:flex space-x-8">
                 <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
@@ -367,11 +373,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const typingText = document.querySelector('.typing-text');
-            if (typingText) {
+            const typingContainer = document.querySelector('.typing-text-container');
+            if (typingContainer) {
                 setTimeout(() => {
-                    typingText.classList.add('finished');
-                }, 2500); // 2.5 seconds to finish typing
+                    typingContainer.classList.add('finished');
+                }, 2500); // Duration of the typing animation
             }
         });
     </script>
