@@ -8,7 +8,7 @@
     <style>
         /* Define a modern, clean font stack */
         :root {
-            --accent-color: #06b6d4; /* A vibrant cyan, matching the typing animation */
+            --accent-color: #9f49f6; /* A vibrant purple */
         }
 
         /*
@@ -17,15 +17,16 @@
          */
         body {
             /* Set the base background color */
-            background-color: #020617;
-            /* Add the dark sphere and grid texture using multiple background images */
+            background-color: #ffffff;
+            /* Add the dual gradient and grid textures using multiple background images */
             background-image:
-                linear-gradient(to right, rgba(71,85,105,0.3) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(71,85,105,0.3) 1px, transparent 1px),
-                radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%);
+                linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+                radial-gradient(circle 500px at 20% 100%, rgba(139,92,246,0.15), transparent),
+                radial-gradient(circle 500px at 100% 80%, rgba(59,130,246,0.15), transparent);
             /* Set the size for each background image layer */
-            background-size: 32px 32px, 32px 32px, 100% 100%;
-            color: #e2e8f0; /* Light gray for readability on a dark background */
+            background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
+            color: #1f2937; /* Dark gray for readability on light background */
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
 
@@ -54,212 +55,189 @@
 
         /* Parallax effect for Section 2 */
         .parallax-bg {
-            background-image: url('https://placehold.co/1920x1080/0f172a/67e8f9');
+            background-image: url('https://placehold.co/1920x1080/f3f4f6/8b5cf6?text=Technology+Background'); /* Placeholder for a light-themed image */
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
-
-        /* Custom styles for gradient text */
-        .text-gradient-blue {
-            background-image: linear-gradient(to right, #3b82f6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .text-gradient-purple-indigo {
-            background-image: linear-gradient(to right, #8b5cf6, #4f46e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .text-gradient-gold {
-            background-image: linear-gradient(to right, #facc15, #ca8a04);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
     </style>
 </head>
 <body class="antialiased leading-relaxed">
 
-    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-zinc-950/50 backdrop-blur-md border-b border-zinc-800">
+    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
         <nav class="flex justify-between items-center max-w-7xl mx-auto">
-            <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center group">
+            <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
                 <span class="typing-animation overflow-hidden whitespace-nowrap">Aura AI Solutions</span>
-                <span class="w-1 h-6 ml-2 bg-cyan-500 animate-pulse group-hover:bg-cyan-300 transition-colors duration-300"></span>
+                <span class="w-1 h-6 ml-2 bg-purple-600 animate-pulse group-hover:bg-purple-400 transition-colors duration-300"></span>
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#hero" class="hover:text-cyan-500 transition-colors duration-300">Home</a>
-                <a href="#services" class="hover:text-cyan-500 transition-colors duration-300">Services</a>
-                <a href="#pricing" class="hover:text-cyan-500 transition-colors duration-300">Pricing</a>
-                <a href="#contact" class="hover:text-cyan-500 transition-colors duration-300">Contact</a>
+                <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
+                <a href="#services" class="hover:text-purple-600 transition-colors duration-300">Services</a>
+                <a href="#pricing" class="hover:text-purple-600 transition-colors duration-300">Pricing</a>
+                <a href="#contact" class="hover:text-purple-600 transition-colors duration-300">Contact</a>
             </div>
         </nav>
     </header>
 
     <main id="hero" class="min-h-screen flex items-center justify-center p-8 text-center">
         <div class="max-w-4xl mx-auto space-y-8">
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-white">
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
                 <span class="block">Transform Your Business with</span>
-                <span class="block text-cyan-500">Intelligent AI Chat.</span>
+                <span class="block text-purple-600">Intelligent AI Chat.</span>
             </h1>
-            <p class="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
+            <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
         </div>
     </main>
 
     <section id="services" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
         <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Empower Your Operations.</h2>
-            <p class="text-lg text-zinc-400 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Empower Your Operations.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div class="p-8 border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 space-y-4">
-                <h3 class="text-2xl font-semibold text-cyan-400">Customer Support</h3>
-                <p class="text-zinc-300">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Customer Support</h3>
+                <p class="text-gray-700">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
             </div>
-            <div class="p-8 border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 space-y-4">
-                <h3 class="text-2xl font-semibold text-cyan-400">Lead Generation</h3>
-                <p class="text-zinc-300">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Lead Generation</h3>
+                <p class="text-gray-700">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
             </div>
-            <div class="p-8 border border-zinc-700 rounded-lg shadow-lg bg-zinc-900 space-y-4">
-                <h3 class="text-2xl font-semibold text-cyan-400">Operational Efficiency</h3>
-                <p class="text-zinc-300">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4">
+                <h3 class="text-2xl font-semibold text-purple-600">Operational Efficiency</h3>
+                <p class="text-gray-700">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
             </div>
         </div>
         <div class="flex justify-center pt-8">
-            <a href="#features" class="inline-block py-4 px-8 text-lg font-semibold text-white bg-cyan-600 rounded-full hover:bg-cyan-500 transition-colors duration-300">Explore Features</a>
+            <a href="#features" class="inline-block py-4 px-8 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Explore Features</a>
         </div>
     </section>
 
-    <section class="h-96 md:h-[600px] flex items-center justify-center text-center text-white parallax-bg">
-        <div class="p-8 bg-zinc-950/70 backdrop-blur-md rounded-lg shadow-xl max-w-3xl space-y-4">
+    <section class="h-96 md:h-[600px] flex items-center justify-center text-center text-gray-900 parallax-bg">
+        <div class="p-8 bg-white/70 backdrop-blur-md rounded-lg shadow-xl max-w-3xl space-y-4">
             <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Redefine Customer Experience.</h2>
-            <p class="text-lg sm:text-xl text-zinc-200">Our AI agents act as the first point of contact, seamlessly guiding visitors from initial query to qualified lead or resolved technical support ticket.</p>
+            <p class="text-lg sm:text-xl text-gray-700">Our AI agents act as the first point of contact, seamlessly guiding visitors from initial query to qualified lead or resolved technical support ticket.</p>
         </div>
     </section>
 
     <section id="features" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
         <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Key Features at a Glance.</h2>
-            <p class="text-lg text-zinc-400 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Key Features at a Glance.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-900">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Context-Aware AI</h3>
-                        <p class="text-zinc-300">Trained on your business data for highly relevant and accurate responses.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Context-Aware AI</h3>
+                        <p class="text-gray-700">Trained on your business data for highly relevant and accurate responses.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Multilingual Support</h3>
-                        <p class="text-zinc-300">Engage a global audience with support for multiple languages out of the box.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Multilingual Support</h3>
+                        <p class="text-gray-700">Engage a global audience with support for multiple languages out of the box.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Real-time Analytics</h3>
-                        <p class="text-zinc-300">Gain instant insights into conversations and user behavior with our intuitive dashboard.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Real-time Analytics</h3>
+                        <p class="text-gray-700">Gain instant insights into conversations and user behavior with our intuitive dashboard.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Seamless Integration</h3>
-                        <p class="text-zinc-300">Effortlessly integrate the chatbot into any website with a single line of code.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Seamless Integration</h3>
+                        <p class="text-gray-700">Effortlessly integrate the chatbot into any website with a single line of code.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Customizable UI & Tone</h3>
-                        <p class="text-zinc-300">Match the chatbot's look and personality to your brand identity.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Customizable UI & Tone</h3>
+                        <p class="text-gray-700">Match the chatbot's look and personality to your brand identity.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="p-8 bg-zinc-900 border border-zinc-700 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
+
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start">
                 <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-cyan-500">&rarr;</span>
+                    <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
-                        <h3 class="text-xl font-semibold text-white">Third-Party App Integrations</h3>
-                        <p class="text-zinc-300">Connect your chatbot to hundreds of business applications to automate workflows and sync data effortlessly.</p>
+                        <h3 class="text-xl font-semibold text-gray-900">Third-Party App Integrations</h3>
+                        <p class="text-gray-700">Connect your chatbot to hundreds of business applications to automate workflows and sync data effortlessly.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-8 bg-zinc-900">
+    <section class="py-24 px-8 bg-gray-100">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div class="space-y-6">
-                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">The Aura AI Bespoke Analytics Suite.</h2>
-                <p class="text-lg text-zinc-300">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
-                <ul class="space-y-4 text-zinc-300">
+                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">The Aura AI Bespoke Analytics Suite.</h2>
+                <p class="text-lg text-gray-700">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
+                <ul class="space-y-4 text-gray-700">
                     <li class="flex items-center space-x-2">
-                        <span class="text-cyan-500 font-bold text-xl">&rarr;</span>
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
                         <span>Save countless hours by identifying common queries instantly.</span>
                     </li>
                     <li class="flex items-center space-x-2">
-                        <span class="text-cyan-500 font-bold text-xl">&rarr;</span>
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
                         <span>Reduce operational costs with automated support insights.</span>
                     </li>
                     <li class="flex items-center space-x-2">
-                        <span class="text-cyan-500 font-bold text-xl">&rarr;</span>
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
                         <span>Personalize support by understanding your users' needs at scale.</span>
                     </li>
                 </ul>
             </div>
             <div>
-                <img src="https://placehold.co/800x600/0f172a/67e8f9?text=Analytics+Dashboard" alt="Placeholder image of a modern analytics dashboard" class="rounded-lg shadow-2xl">
+                <img src="https://placehold.co/800x600/f3f4f6/8b5cf6?text=Analytics+Dashboard" alt="Placeholder image of a modern analytics dashboard" class="rounded-lg shadow-2xl">
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="py-24 px-8 max-w-7xl mx-auto space-y-16">
+    <section id="pricing" class="py-24 px-8 bg-zinc-950 text-gray-100">
         <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">Simple & Transparent Pricing.</h2>
-            <p class="text-lg text-zinc-400 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight">Simple & Transparent Pricing.</h2>
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
         </div>
-        
-        <div class="relative max-w-3xl mx-auto p-6 md:p-8 bg-blue-900/60 border border-blue-500 rounded-xl shadow-lg shadow-blue-500/10 text-center space-y-4">
-            <h3 class="text-2xl font-bold text-blue-400">Limited Time Offer</h3>
-            <p class="text-lg text-blue-200">Sign up now and get a <strong>one-time installation fee of just $499</strong>, a 50% discount for a limited period only!</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-end">
-            <div class="relative bg-zinc-900 border border-zinc-700 rounded-xl p-8 space-y-6 flex flex-col items-center text-center">
-                <span class="absolute top-0 right-0 mt-4 mr-4 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">50% OFF</span>
-                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700">Essential</h3>
-                <p class="text-zinc-400">For small teams getting started.</p>
-                <div class="space-y-2 text-zinc-300">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-end mt-16">
+            <div class="bg-gray-900 rounded-xl p-8 space-y-6 flex flex-col items-center text-center relative overflow-hidden">
+                <span class="absolute top-4 right-4 text-xs font-bold uppercase py-1 px-3 rounded-full bg-red-500 text-white">20% Off!</span>
+                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Essential</h3>
+                <p class="text-gray-300">For small teams getting started.</p>
+                <div class="space-y-2 text-gray-300">
                     <p>1,000 monthly messages</p>
                     <p>1 chatbot instance</p>
                     <p>Aura AI branding</p>
                     <p>Basic analytics suite</p>
                     <p>Support within 7 business days</p>
                 </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors duration-300">Start Today</a>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors duration-300">Start for Free</a>
             </div>
 
-            <div class="relative grayscale opacity-50 bg-indigo-950 border border-indigo-700 rounded-xl p-8 space-y-6 flex flex-col items-center text-center shadow-lg transform scale-105">
-                <span class="absolute top-0 right-0 mt-4 mr-4 px-3 py-1 bg-yellow-400 text-gray-900 text-xs font-bold rounded-full">Coming Soon</span>
-                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-700">Elite</h3>
+            <div class="relative bg-gradient-to-br from-purple-800 to-indigo-800 rounded-xl p-8 space-y-6 flex flex-col items-center text-center opacity-50 pointer-events-none">
+                <span class="absolute top-4 right-4 text-xs font-bold uppercase py-1 px-3 rounded-full bg-yellow-400 text-gray-900">Coming Soon</span>
+                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400">Elite</h3>
                 <p class="text-purple-300">For growing businesses.</p>
                 <div class="space-y-2 text-purple-300">
                     <p>5,000 monthly messages</p>
@@ -268,75 +246,82 @@
                     <p>Unlocked analytics</p>
                     <p>Priority support</p>
                 </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-gradient-to-r from-purple-500/50 to-indigo-600/50 rounded-full cursor-not-allowed">Coming Soon</a>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-purple-300 bg-gradient-to-r from-purple-400/30 to-indigo-400/30 rounded-full">Choose Elite</a>
             </div>
 
-            <div class="relative grayscale opacity-50 bg-zinc-900 border border-zinc-700 rounded-xl p-8 space-y-6 flex flex-col items-center text-center">
-                <span class="absolute top-0 right-0 mt-4 mr-4 px-3 py-1 bg-yellow-400 text-gray-900 text-xs font-bold rounded-full">Coming Soon</span>
-                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600">Executive</h3>
-                <p class="text-zinc-400">For large-scale operations.</p>
-                <div class="space-y-2 text-zinc-300">
+            <div class="relative bg-gradient-to-br from-yellow-800 to-amber-800 rounded-xl p-8 space-y-6 flex flex-col items-center text-center opacity-50 pointer-events-none">
+                <span class="absolute top-4 right-4 text-xs font-bold uppercase py-1 px-3 rounded-full bg-yellow-400 text-gray-900">Coming Soon</span>
+                <h3 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-400">Executive</h3>
+                <p class="text-yellow-300">For large-scale operations.</p>
+                <div class="space-y-2 text-yellow-300">
                     <p>Unlimited usage</p>
                     <p>White-label support</p>
                     <p>Custom personalities</p>
                     <p>Comprehensive analytics</p>
                     <p>Dedicated 24-hour response</p>
                 </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-gradient-to-r from-yellow-400/50 to-amber-600/50 rounded-full cursor-not-allowed">Coming Soon</a>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-yellow-300 bg-gradient-to-r from-yellow-500/30 to-amber-500/30 rounded-full">Contact Sales</a>
             </div>
+        </div>
+        
+        <div class="mt-24 max-w-2xl mx-auto p-6 rounded-xl border border-blue-500 bg-blue-900/50 text-center space-y-4">
+            <h4 class="text-xl font-semibold text-blue-200">
+                A Special Offer Just for You.
+            </h4>
+            <p class="text-lg text-blue-300">Sign up for any plan today and we'll waive the <strong class="text-blue-500">one-time installation fee</strong>, a <strong class="text-blue-500">$299 value</strong>, as part of our limited-time launch promotion.</p>
         </div>
     </section>
 
     <section class="py-24 px-8 max-w-7xl mx-auto space-y-16">
         <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">What's Next for Aura AI?</h2>
-            <p class="text-lg text-zinc-400 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">What's Next for Aura AI?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-white">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
             <div class="flex items-start space-x-4">
-                <span class="text-3xl text-cyan-500">&rarr;</span>
+                <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
-                    <h3 class="text-xl font-semibold text-white">AI Training on Entire Websites</h3>
-                    <p class="text-zinc-300">Scan and train the AI on all content from your site for even greater accuracy.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">AI Training on Entire Websites</h3>
+                    <p class="text-gray-700">Scan and train the AI on all content from your site for even greater accuracy.</p>
                 </div>
             </div>
             <div class="flex items-start space-x-4">
-                <span class="text-3xl text-cyan-500">&rarr;</span>
+                <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
-                    <h3 class="text-xl font-semibold text-white">Smart Scheduling</h3>
-                    <p class="text-zinc-300">Allow the chatbot to book appointments directly with your clients.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">Smart Scheduling</h3>
+                    <p class="text-gray-700">Allow the chatbot to book appointments directly with your clients.</p>
                 </div>
             </div>
             <div class="flex items-start space-x-4">
-                <span class="text-3xl text-cyan-500">&rarr;</span>
+                <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
-                    <h3 class="text-xl font-semibold text-white">CRM Integrations</h3>
-                    <p class="text-zinc-300">Sync data and conversations directly with your existing CRM platforms.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">CRM Integrations</h3>
+                    <p class="text-gray-700">Sync data and conversations directly with your existing CRM platforms.</p>
                 </div>
             </div>
             <div class="flex items-start space-x-4">
-                <span class="text-3xl text-cyan-500">&rarr;</span>
+                <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
-                    <h3 class="text-xl font-semibold text-white">Omnichannel Support</h3>
-                    <p class="text-zinc-300">Extend your AI's presence to social media, messaging apps, and more.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">Omnichannel Support</h3>
+                    <p class="text-gray-700">Extend your AI's presence to social media, messaging apps, and more.</p>
                 </div>
             </div>
             <div class="flex items-start space-x-4">
-                <span class="text-3xl text-cyan-500">&rarr;</span>
+                <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
-                    <h3 class="text-xl font-semibold text-white">Real-Time Agents</h3>
-                    <p class="text-zinc-300">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
+                    <h3 class="text-xl font-semibold text-gray-900">Real-Time Agents</h3>
+                    <p class="text-gray-700">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-zinc-950 py-12 border-t border-zinc-800">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-zinc-500 space-y-4 md:space-y-0">
+    <footer id="contact" class="bg-gray-100 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-gray-500 space-y-4 md:space-y-0">
             <p>&copy; 2025 Aura AI Solutions. All Rights Reserved.</p>
             <div class="flex space-x-6">
-                <a href="#" class="hover:text-cyan-500 transition-colors duration-300">Privacy Policy</a>
-                <a href="#" class="hover:text-cyan-500 transition-colors duration-300">Terms of Service</a>
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Terms of Service</a>
             </div>
         </div>
     </footer>
