@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura AI Solutions - Intelligent AI Chatbots for Business</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <style>
         /* Define a modern, clean font stack */
         :root {
@@ -33,24 +32,28 @@
 
         /* Custom animation for the logo typing effect */
         .typing-text {
+            display: inline-block;
             overflow: hidden;
             white-space: nowrap;
+            width: 0;
             animation: typing-effect 2.5s steps(20, end) forwards;
         }
-
-        .typing-text::after {
-            content: '';
-            border-right: 2px solid var(--accent-color);
-            animation: blink-caret 0.75s step-end infinite;
-            display: inline-block;
-            width: 0;
-            white-space: nowrap;
-            overflow: hidden;
+        
+        .typing-text-container {
+            position: relative;
         }
 
-        .typing-text.finished::after {
-            animation: none;
-            border-right: none;
+        .typing-text-container::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation: blink-caret 0.75s step-end infinite;
+            color: var(--accent-color);
+        }
+
+        .typing-text-container.finished::after {
+            display: none;
         }
 
         @keyframes typing-effect {
@@ -59,25 +62,8 @@
         }
 
         @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--accent-color); }
-        }
-
-        /* New Fade-In Animation for "Wow Factor" */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
         }
 
         /* Parallax effect for Section 2 */
@@ -179,15 +165,15 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll">
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
                 <h3 class="text-2xl font-semibold text-purple-600">Customer Support</h3>
                 <p class="text-gray-700">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
             </div>
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll">
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
                 <h3 class="text-2xl font-semibold text-purple-600">Lead Generation</h3>
                 <p class="text-gray-700">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
             </div>
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll">
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
                 <h3 class="text-2xl font-semibold text-purple-600">Operational Efficiency</h3>
                 <p class="text-gray-700">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
             </div>
@@ -210,7 +196,7 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-900">
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -220,7 +206,7 @@
                 </div>
             </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -230,7 +216,7 @@
                 </div>
             </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -240,7 +226,7 @@
                 </div>
             </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -250,7 +236,7 @@
                 </div>
             </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -260,7 +246,7 @@
                 </div>
             </div>
             
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
                 <div class="flex items-start space-x-4">
                     <span class="text-3xl text-purple-600">&rarr;</span>
                     <div>
@@ -279,7 +265,7 @@
                 <p class="text-lg text-gray-700">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
                 <ul class="space-y-4 text-gray-700">
                     <li class="flex items-center space-x-2">
-                        <span class="text-3xl text-purple-600 font-bold">&rarr;</span>
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
                         <span>Save countless hours by identifying common queries instantly.</span>
                     </li>
                     <li class="flex items-center space-x-2">
@@ -304,7 +290,7 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
         </div>
 
-        <div class="max-w-4xl mx-auto py-8 px-6 bg-[#F2ECFE] border border-gray-300 rounded-xl text-center space-y-4 animate-on-scroll">
+        <div class="max-w-4xl mx-auto py-8 px-6 bg-gray-200 border border-gray-300 rounded-xl text-center space-y-4 animate-on-scroll">
             <h3 class="text-2xl font-bold text-gray-800">One-Time Installation Fee</h3>
             <p class="text-gray-600">
                 All plans include a <span class="font-semibold">one-time setup fee of $299</span>. We handle all integration and initial AI training for a seamless launch.
@@ -359,42 +345,42 @@
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">AI Training on Entire Websites</h3>
                     <p class="text-gray-700">Scan and train the AI on all content from your site for even greater accuracy.</p>
                 </div>
             </div>
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">Smart Scheduling</h3>
                     <p class="text-gray-700">Allow the chatbot to book appointments directly with your clients.</p>
                 </div>
             </div>
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">CRM Integrations</h3>
                     <p class="text-gray-700">Sync data and conversations directly with your existing CRM platforms.</p>
                 </div>
             </div>
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">Omnichannel Support</h3>
                     <p class="text-gray-700">Extend your AI's presence to social media, messaging apps, and more.</p>
                 </div>
             </div>
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">Real-Time Agents</h3>
                     <p class="text-gray-700">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
                 </div>
             </div>
-            <div class="flex items-start space-x-4 animate-on-scroll">
+            <div class="flex items-start space-x-4">
                 <span class="text-3xl text-purple-600">&rarr;</span>
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">AI Applications</h3>
@@ -416,11 +402,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const typingText = document.querySelector('.typing-text');
-            if (typingText) {
+            const typingContainer = document.querySelector('.typing-text-container');
+            if (typingContainer) {
                 setTimeout(() => {
-                    typingText.classList.add('finished');
-                }, 2500); // 2.5 seconds to finish typing
+                    typingContainer.classList.add('finished');
+                }, 2500); // Duration of the typing animation
             }
 
             // JavaScript for scroll animations
@@ -445,15 +431,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
