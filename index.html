@@ -113,6 +113,14 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+         @keyframes shimmer {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+        .shimmer-text {
+            background-size: 200% auto;
+            animation: shimmer 2.5s linear infinite;
+        }
     </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -319,7 +327,7 @@
             </div>
 
             <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
-                <h3 class="text-3xl font-bold executive-title">Executive</h3>
+                <h3 class="text-3xl font-bold bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-500 text-transparent bg-clip-text animate-shimmer">Executive</h3>
                 <p class="text-gray-600">For large-scale operations.</p>
                 <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
                     <p>Unlimited usage</p>
@@ -432,3 +440,4 @@
     </script>
 </body>
 </html>
+
