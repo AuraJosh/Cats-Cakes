@@ -1,437 +1,434 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI Solutions - Intelligent AI Chatbots for Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-    <style>
-        /* Define a modern, clean font stack */
-        :root {
-            --accent-color: #9f49f6; /* A vibrant purple */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI Solutions - Intelligent AI Chatbots for Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <style>
+        /* Define a modern, clean font stack */
+        :root {
+            --accent-color: #9f49f6; /* A vibrant purple */
+        }
 
-        /*
-         * This custom CSS ensures the background gradients are always visible
-         * by applying them directly to the body.
-         */
-        body {
-            /* Set the base background color */
-            background-color: #ffffff;
-            /* Add the dual gradient and grid textures using multiple background images */
-            background-image:
-                linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
-                radial-gradient(circle 500px at 20% 100%, rgba(139,92,246,0.15), transparent),
-                radial-gradient(circle 500px at 100% 80%, rgba(59,130,246,0.15), transparent);
-            /* Set the size for each background image layer */
-            background-size: 24px 24px, 24px 24px, 100% 100%, 100% 100%;
-            color: #1f2937; /* Dark gray for readability on light background */
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
+        /*
+         * This custom CSS ensures the background gradients are always visible
+         * by applying them directly to the body.
+         */
+        body {
+            /* Set the base background color */
+            background-color: #ffffff;
+            /* Add the dual gradient and grid textures using multiple background images */
+            background-image:
+                linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+                radial-gradient(circle 500px at 20% 100%, rgba(139,92,246,0.15), transparent),
+                radial-gradient(circle 500px at 100% 80%, rgba(59,130,246,0.15), transparent);
+            /* Set the size for each background image layer */
+            background-size: 24px 24px, 24px 24px, 100% 100%, 100% 100%;
+            color: #1f2937; /* Dark gray for readability on light background */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
 
-        /* Custom animation for the logo typing effect */
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            animation: typing-effect 2.5s steps(20, end) forwards;
-        }
-        
-        .typing-text-container {
-            position: relative;
-        }
+        /* Custom animation for the logo typing effect */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing-effect 2.5s steps(20, end) forwards;
+        }
+        
+        .typing-text-container {
+            position: relative;
+        }
 
-        .typing-text-container::after {
-            content: '|';
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            animation: blink-caret 0.75s step-end infinite;
-            color: var(--accent-color);
-        }
+        .typing-text-container::after {
+            content: '|';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation: blink-caret 0.75s step-end infinite;
+            color: var(--accent-color);
+        }
 
-        .typing-text-container.finished::after {
-            display: none;
-        }
+        .typing-text-container.finished::after {
+            display: none;
+        }
 
-        @keyframes typing-effect {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+        @keyframes typing-effect {
+            from { width: 0; }
+            to { width: 100%; }
+        }
 
-        @keyframes blink-caret {
-            from, to { opacity: 0; }
-            50% { opacity: 1; }
-        }
+        @keyframes blink-caret {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
 
-        /* Parallax effect for Section 2 */
-        .parallax-bg {
-            background-image: url('F3F4F6.png'); /* Placeholder for a light-themed image */
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        /* New Scroll Animation Styles */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Parallax effect for Section 2 */
+        .parallax-bg {
+            background-image: url('F3F4F6.png'); /* Placeholder for a light-themed image */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* New Scroll Animation Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* Custom CSS for gradients and effects */
-        .essential-title {
-            background-image: linear-gradient(to right, #007bff, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        /* Custom CSS for gradients and effects */
+        .essential-title {
+            background-image: linear-gradient(to right, #007bff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-        .elite-title {
-            background-image: linear-gradient(to right, #8b5cf6, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Custom hover effect for cards */
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -100% 0; }
-            100% { background-position: 100% 0; }
-        }
-        .shimmer-text {
-            background-size: 200% auto;
-            animation: shimmer 2.5s linear infinite;
-        }
-    </style>
+        .elite-title {
+            background-image: linear-gradient(to right, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .executive-title {
+            background-image: linear-gradient(to right, #ffbe0b, #fb7210);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* Custom hover effect for cards */
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
 <body class="antialiased leading-relaxed">
 
-    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
-        <nav class="flex justify-between items-center max-w-7xl mx-auto">
-            <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
-                <span class="typing-text-container">
-                    <span class="typing-text">Aura AI Solutions</span>
-                </span>
-            </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
-                <a href="#services" class="hover:text-purple-600 transition-colors duration-300">Services</a>
-                <a href="#pricing" class="hover:text-purple-600 transition-colors duration-300">Pricing</a>
-                <a href="#contact" class="hover:text-purple-600 transition-colors duration-300">Contact</a>
-            </div>
-        </nav>
-    </header>
+    <header class="fixed top-0 left-0 w-full z-50 p-6 sm:p-8 bg-white/70 backdrop-blur-md border-b border-gray-200">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#" class="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center group">
+                <span class="typing-text-container">
+                    <span class="typing-text">Aura AI Solutions</span>
+                </span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-purple-600 transition-colors duration-300">Home</a>
+                <a href="#services" class="hover:text-purple-600 transition-colors duration-300">Services</a>
+                <a href="#pricing" class="hover:text-purple-600 transition-colors duration-300">Pricing</a>
+                <a href="#contact" class="hover:text-purple-600 transition-colors duration-300">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-    <main id="hero" class="min-h-screen flex items-center justify-center p-8 text-center">
-        <div class="max-w-4xl mx-auto space-y-8 fade-in">
-            <model-viewer
-                src="token.glb"
-                alt="Aura AI token 3D model"
-                auto-rotate="0.000001rpm"
-                ar
-                ar-modes="webxr scene-viewer quick-look"
-                shadow-intensity="1"
-                autoplay
-                orientation="90deg 90deg 90deg" style="width: 250px; height: 250px; margin: 0 auto; display: block;"
-            ></model-viewer>
-        
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
-                <span class="block">Transform Your Business with</span>
-                <span class="block text-purple-600">Intelligent AI Chat.</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
-            
-            <a href="#services" class="flex justify-center mt-8 cursor-pointer">
-                <svg class="w-6 h-6 text-purple-600 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </a>
-        </div>
-    </main>
+    <main id="hero" class="min-h-screen flex items-center justify-center p-8 text-center">
+        <div class="max-w-4xl mx-auto space-y-8 fade-in">
+            <model-viewer
+                src="token.glb"
+                alt="Aura AI token 3D model"
+                auto-rotate="0.000001rpm"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                shadow-intensity="1"
+                autoplay
+                orientation="90deg 90deg 90deg" style="width: 250px; height: 250px; margin: 0 auto; display: block;"
+            ></model-viewer>
+        
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
+                <span class="block">Transform Your Business with</span>
+                <span class="block text-purple-600">Intelligent AI Chat.</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
+            
+            <a href="#services" class="flex justify-center mt-8 cursor-pointer">
+                <svg class="w-6 h-6 text-purple-600 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </a>
+        </div>
+    </main>
 
-    <section id="services" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
-        <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Empower Your Operations.</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
-                <h3 class="text-2xl font-semibold text-purple-600">Customer Support</h3>
-                <p class="text-gray-700">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
-            </div>
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
-                <h3 class="text-2xl font-semibold text-purple-600">Lead Generation</h3>
-                <p class="text-gray-700">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
-            </div>
-            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
-                <h3 class="text-2xl font-semibold text-purple-600">Operational Efficiency</h3>
-                <p class="text-gray-700">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
-            </div>
-        </div>
-        <div class="flex justify-center pt-8 animate-on-scroll">
-            <a href="#features" class="inline-block py-4 px-8 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Explore Features</a>
-        </div>
-    </section>
+    <section id="services" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Empower Your Operations.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
+                <h3 class="text-2xl font-semibold text-purple-600">Customer Support</h3>
+                <p class="text-gray-700">Reduce ticket volume and wait times with an intelligent bot that resolves common queries 24/7.</p>
+            </div>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
+                <h3 class="text-2xl font-semibold text-purple-600">Lead Generation</h3>
+                <p class="text-gray-700">Qualify leads and collect valuable user data with conversational forms that feel natural and engaging.</p>
+            </div>
+            <div class="p-8 border border-gray-200 rounded-lg shadow-lg bg-white space-y-4 animate-on-scroll card-hover transition-all duration-300">
+                <h3 class="text-2xl font-semibold text-purple-600">Operational Efficiency</h3>
+                <p class="text-gray-700">Automate internal processes, from employee onboarding to scheduling, and free up your team's time.</p>
+            </div>
+        </div>
+        <div class="flex justify-center pt-8 animate-on-scroll">
+            <a href="#features" class="inline-block py-4 px-8 text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Explore Features</a>
+        </div>
+    </section>
 
-    <section class="h-96 md:h-[600px] flex items-center justify-center text-center text-gray-900 parallax-bg animate-on-scroll">
-        <div class="p-8 bg-white/70 backdrop-blur-md rounded-lg shadow-xl max-w-3xl space-y-4">
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Redefine Customer Experience.</h2>
-            <p class="text-lg sm:text-xl text-gray-700">Our AI agents act as the first point of contact, seamlessly guiding visitors from initial query to qualified lead or resolved technical support ticket.</p>
-        </div>
-    </section>
+    <section class="h-96 md:h-[600px] flex items-center justify-center text-center text-gray-900 parallax-bg animate-on-scroll">
+        <div class="p-8 bg-white/70 backdrop-blur-md rounded-lg shadow-xl max-w-3xl space-y-4">
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Redefine Customer Experience.</h2>
+            <p class="text-lg sm:text-xl text-gray-700">Our AI agents act as the first point of contact, seamlessly guiding visitors from initial query to qualified lead or resolved technical support ticket.</p>
+        </div>
+    </section>
 
-    <section id="features" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
-        <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Key Features at a Glance.</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-900">
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Context-Aware AI</h3>
-                        <p class="text-gray-700">Trained on your business data for highly relevant and accurate responses.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="features" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Key Features at a Glance.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Powerful capabilities engineered to deliver a superior conversational AI experience.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-900">
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Context-Aware AI</h3>
+                        <p class="text-gray-700">Trained on your business data for highly relevant and accurate responses.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Multilingual Support</h3>
-                        <p class="text-gray-700">Engage a global audience with support for multiple languages out of the box.</p>
-                </div>
-            </div>
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Multilingual Support</h3>
+                        <p class="text-gray-700">Engage a global audience with support for multiple languages out of the box.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Real-time Analytics</h3>
-                        <p class="text-gray-700">Gain instant insights into conversations and user behavior with our intuitive dashboard.</p>
-                    </div>
-                </div>
-            </div>
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Real-time Analytics</h3>
+                        <p class="text-gray-700">Gain instant insights into conversations and user behavior with our intuitive dashboard.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Seamless Integration</h3>
-                        <p class="text-gray-700">Effortlessly integrate the chatbot into any website with a single line of code.</p>
-                    </div>
-                </div>
-            </div>
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Seamless Integration</h3>
+                        <p class="text-gray-700">Effortlessly integrate the chatbot into any website with a single line of code.</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Customizable UI & Tone</h3>
-                        <p class="text-gray-700">Match the chatbot's look and personality to your brand identity.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
-                <div class="flex items-start space-x-4">
-                    <span class="text-3xl text-purple-600">&rarr;</span>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-900">Third-Party App Integrations</h3>
-                        <p class="text-gray-700">Connect your chatbot to hundreds of business applications to automate workflows and sync data effortlessly.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Customizable UI & Tone</h3>
+                        <p class="text-gray-700">Match the chatbot's look and personality to your brand identity.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-md space-y-4 flex flex-col justify-start animate-on-scroll card-hover transition-all duration-300">
+                <div class="flex items-start space-x-4">
+                    <span class="text-3xl text-purple-600">&rarr;</span>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Third-Party App Integrations</h3>
+                        <p class="text-gray-700">Connect your chatbot to hundreds of business applications to automate workflows and sync data effortlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="py-24 px-8 bg-gray-100 animate-on-scroll">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">The Aura AI Bespoke Analytics Suite.</h2>
-                <p class="text-lg text-gray-700">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
-                <ul class="space-y-4 text-gray-700">
-                    <li class="flex items-center space-x-2">
-                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
-                        <span>Save countless hours by identifying common queries instantly.</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <span class="text-3xl text-purple-600 font-bold">&rarr;</span>
-                        <span>Reduce operational costs with automated support insights.</span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <span class="text-3xl text-purple-600 font-bold">&rarr;</span>
-                        <span>Personalize support by understanding your users' needs at scale.</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <img src="analyticspreview.png" alt="Placeholder image of a modern analytics dashboard" class="rounded-lg shadow-2xl">
-            </div>
-        </div>
-    </section>
+    <section class="py-24 px-8 bg-gray-100 animate-on-scroll">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">The Aura AI Bespoke Analytics Suite.</h2>
+                <p class="text-lg text-gray-700">Don't just chat, understand. Our powerful analytics dashboard gives you real-time tracking of every message, question, and user interaction.</p>
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex items-center space-x-2">
+                        <span class="text-purple-600 font-bold text-xl">&rarr;</span>
+                        <span>Save countless hours by identifying common queries instantly.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="text-3xl text-purple-600 font-bold">&rarr;</span>
+                        <span>Reduce operational costs with automated support insights.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="text-3xl text-purple-600 font-bold">&rarr;</span>
+                        <span>Personalize support by understanding your users' needs at scale.</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <img src="analyticspreview.png" alt="Placeholder image of a modern analytics dashboard" class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </section>
 
-    <section id="pricing" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
-        <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Simple & Transparent Pricing.</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
-        </div>
+    <section id="pricing" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Simple & Transparent Pricing.</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that fits your business needs, with no hidden fees or surprises.</p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
-            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
-                <h3 class="text-3xl font-bold essential-title">Essential</h3>
-                <p class="text-gray-600">For small teams getting started.</p>
-                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
-                    <p>1,000 monthly messages</p>
-                    <p>1 chatbot instance</p>
-                    <p>Aura AI branding</p>
-                    <p>Basic analytics suite</p>
-                    <p>Support within 7 business days</p>
-                </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors duration-300">Start for Free</a>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
+            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
+                <h3 class="text-3xl font-bold essential-title">Essential</h3>
+                <p class="text-gray-600">For small teams getting started.</p>
+                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
+                    <p>1,000 monthly messages</p>
+                    <p>1 chatbot instance</p>
+                    <p>Aura AI branding</p>
+                    <p>Basic analytics suite</p>
+                    <p>Support within 7 business days</p>
+                </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-500 transition-colors duration-300">Start for Free</a>
+            </div>
 
-            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
-                <h3 class="text-3xl font-bold elite-title">Elite</h3>
-                <p class="text-gray-600">For growing businesses.</p>
-                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
-                    <p>5,000 monthly messages</p>
-                    <p>3 chatbot instances</p>
-                    <p>Color customization</p>
-                    <p>Unlocked analytics</p>
-                    <p>Priority support</p>
-                </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Choose Elite</a>
-            </div>
+            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
+                <h3 class="text-3xl font-bold elite-title">Elite</h3>
+                <p class="text-gray-600">For growing businesses.</p>
+                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
+                    <p>5,000 monthly messages</p>
+                    <p>3 chatbot instances</p>
+                    <p>Color customization</p>
+                    <p>Unlocked analytics</p>
+                    <p>Priority support</p>
+                </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-purple-600 rounded-full hover:bg-purple-500 transition-colors duration-300">Choose Elite</a>
+            </div>
 
-            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
-                <h3 class="text-3xl font-bold bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-500 text-transparent bg-clip-text animate-shimmer">Executive</h3>
-                <p class="text-gray-600">For large-scale operations.</p>
-                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
-                    <p>Unlimited usage</p>
-                    <p>White-label support</p>
-                    <p>Custom personalities</p>
-                    <p>Comprehensive analytics</p>
-                    <p>Dedicated 24-hour response</p>
-                </div>
-                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors duration-300">Contact Sales</a>
-            </div>
-        </div>
+            <div class="relative bg-gray-100 border border-gray-300 rounded-xl p-8 space-y-6 flex flex-col items-center text-center card-hover transition-all duration-300 animate-on-scroll">
+                <h3 class="text-3xl font-bold executive-title">Executive</h3>
+                <p class="text-gray-600">For large-scale operations.</p>
+                <div class="space-y-2 text-gray-700 flex-grow flex flex-col justify-center">
+                    <p>Unlimited usage</p>
+                    <p>White-label support</p>
+                    <p>Custom personalities</p>
+                    <p>Comprehensive analytics</p>
+                    <p>Dedicated 24-hour response</p>
+                </div>
+                <a href="#" class="mt-8 block w-full py-3 px-6 text-center text-lg font-semibold text-white bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors duration-300">Contact Sales</a>
+            </div>
+        </div>
 
-        <div class="py-4 px-6 bg-gray-200 border border-gray-300 rounded-xl text-center space-y-4 animate-on-scroll">
-            <h3 class="text-2xl font-bold text-gray-800">One-Time Installation Fee</h3>
-            <p class="text-gray-600">
-                All plans include a <span class="font-semibold">one-time setup fee of $299</span>. We handle all integration and initial AI training for a seamless launch.
-            </p>
-        </div>
-    </section>
+        <div class="py-4 px-6 bg-gray-200 border border-gray-300 rounded-xl text-center space-y-4 animate-on-scroll">
+            <h3 class="text-2xl font-bold text-gray-800">One-Time Installation Fee</h3>
+            <p class="text-gray-600">
+                All plans include a <span class="font-semibold">one-time setup fee of $299</span>. We handle all integration and initial AI training for a seamless launch.
+            </p>
+        </div>
+    </section>
 
-    <section class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
-        <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">What's Next for Aura AI?</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">AI Training on Entire Websites</h3>
-                    <p class="text-gray-700">Scan and train the AI on all content from your site for even greater accuracy.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">Smart Scheduling</h3>
-                    <p class="text-gray-700">Allow the chatbot to book appointments directly with your clients.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">CRM Integrations</h3>
-                    <p class="text-gray-700">Sync data and conversations directly with your existing CRM platforms.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">Omnichannel Support</h3>
-                    <p class="text-gray-700">Extend your AI's presence to social media, messaging apps, and more.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">Real-Time Agents</h3>
-                    <p class="text-gray-700">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <span class="text-3xl text-purple-600">&rarr;</span>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900">AI Applications</h3>
-                    <p class="text-gray-700">Explore new ways to use AI for bespoke solutions beyond traditional chatbots.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
+        <div class="text-center space-y-4">
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">What's Next for Aura AI?</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">We are continuously innovating to bring you the next generation of conversational AI. Here's a look at what's in development.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-900">
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">AI Training on Entire Websites</h3>
+                    <p class="text-gray-700">Scan and train the AI on all content from your site for even greater accuracy.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Smart Scheduling</h3>
+                    <p class="text-gray-700">Allow the chatbot to book appointments directly with your clients.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">CRM Integrations</h3>
+                    <p class="text-gray-700">Sync data and conversations directly with your existing CRM platforms.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Omnichannel Support</h3>
+                    <p class="text-gray-700">Extend your AI's presence to social media, messaging apps, and more.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">Real-Time Agents</h3>
+                    <p class="text-gray-700">Future-proof your support with conversational AI that can adapt and learn on the fly.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <span class="text-3xl text-purple-600">&rarr;</span>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">AI Applications</h3>
+                    <p class="text-gray-700">Explore new ways to use AI for bespoke solutions beyond traditional chatbots.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer id="contact" class="bg-gray-100 py-12 border-t border-gray-200 animate-on-scroll">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-gray-500 space-y-4 md:space-y-0">
-            <p>&copy; 2025 Aura AI Solutions. All Rights Reserved.</p>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Privacy Policy</a>
-                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    <footer id="contact" class="bg-gray-100 py-12 border-t border-gray-200 animate-on-scroll">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-gray-500 space-y-4 md:space-y-0">
+            <p>&copy; 2025 Aura AI Solutions. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-purple-600 transition-colors duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const typingContainer = document.querySelector('.typing-text-container');
-            if (typingContainer) {
-                setTimeout(() => {
-                    typingContainer.classList.add('finished');
-                }, 2500); // Duration of the typing animation
-            }
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingContainer = document.querySelector('.typing-text-container');
+            if (typingContainer) {
+                setTimeout(() => {
+                    typingContainer.classList.add('finished');
+                }, 2500); // Duration of the typing animation
+            }
 
-            // JavaScript for scroll animations
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            // JavaScript for scroll animations
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        // Optional: Stop observing once the element is visible to improve performance
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1 // Triggers the animation when 10% of the element is visible
-            });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: Stop observing once the element is visible to improve performance
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Triggers the animation when 10% of the element is visible
+            });
 
-            animateElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
