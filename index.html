@@ -114,39 +114,41 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        .purple-glow {
-          /* The gradient that will fill the text */
-          background: linear-gradient(45deg, #a742c0, #e99bff);
-        
-          /* Set initial text-shadow (no glow) */
-          text-shadow: 0 0 0px #e99bff, 0 0 0px #a742c0;
-        
-          /* The magic properties to apply the gradient to the text */
+        .shimmering-text {
+          /* Set a metallic purple gradient background */
+          background: linear-gradient(
+            90deg,
+            #8e44ad 0%, /* Darker purple for depth */
+            #e0b0ff 25%, /* Lighter, reflective purple */
+            #8e44ad 50%, /* Return to darker purple */
+            #e0b0ff 75%, /* Another highlight */
+            #8e44ad 100% /* End with darker purple */
+          );
+          
+          /* Initial background size is wider than the text to allow movement */
+          background-size: 200% auto; 
+          
+          /* Apply the gradient to the text */
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         
-          /* Font size */
+          /* Font styling */
           font-weight: bold;
-          font-size: 1.2em;
+          font-size: 2.6em;
+          letter-spacing: 2px; /* Add a little spacing for better effect */
         
-          /* Apply the animation */
-          animation: pulse-glow 8s infinite alternate; /* 2 seconds, repeats infinitely, alternates direction */
+          /* Apply the shimmer animation */
+          animation: shimmer 3s linear infinite; /* 3 seconds, linear speed, repeats infinitely */
         }
         
-        /* Define the keyframe animation */
-        @keyframes pulse-glow {
+        @keyframes shimmer {
           0% {
-            /* No glow */
-            text-shadow: 0 0 0px #e99bff, 0 0 0px #a742c0;
+            background-position: 0% 0; /* Start the gradient at the left */
           }
           100% {
-            /* Full glow */
-            text-shadow:
-              0 0 5px #e99bff,  /* Reduced from 10px */
-              0 0 10px #e99bff, /* Reduced from 20px */
-              0 0 15px #a742c0, /* Reduced from 30px */
-              0 0 20px #a742c0; /* Reduced from 40px */
+            background-position: -200% 0; /* Move the gradient completely across to the left */
+            /* Or for a right-to-left shimmer, use 200% 0 */
           }
         }
     </style>
@@ -184,7 +186,7 @@
         
             <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
                 <span class="block">Transform Your Business with</span>
-                <span class="purple-glow">Intelligent AI Chat.</span>
+                <span class="shimmering-text">Intelligent AI Chat.</span>
             </h1>
             <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
             
@@ -468,6 +470,7 @@
     </script>
 </body>
 </html>
+
 
 
 
