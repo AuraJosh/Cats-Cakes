@@ -117,20 +117,37 @@
         .purple-glow {
           /* The gradient that will fill the text */
           background: linear-gradient(45deg, #a742c0, #e99bff);
-          
-          /* Reduced glowy shadow effect */
-          text-shadow: 
-            0 0 5px #e99bff,
-            0 0 10px #a742c0;
+        
+          /* Set initial text-shadow (no glow) */
+          text-shadow: 0 0 0px #e99bff, 0 0 0px #a742c0;
         
           /* The magic properties to apply the gradient to the text */
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         
-          /* Slightly larger font size */
+          /* Font size */
           font-weight: bold;
-          font-size: 1.5em; /* Changed from 2.5em to 2.6em */
+          font-size: 2.6em;
+        
+          /* Apply the animation */
+          animation: pulse-glow 2s infinite alternate; /* 2 seconds, repeats infinitely, alternates direction */
+        }
+        
+        /* Define the keyframe animation */
+        @keyframes pulse-glow {
+          0% {
+            /* No glow */
+            text-shadow: 0 0 0px #e99bff, 0 0 0px #a742c0;
+          }
+          100% {
+            /* Full glow */
+            text-shadow:
+              0 0 10px #e99bff, /* Lighter, more diffuse glow */
+              0 0 20px #e99bff,
+              0 0 30px #a742c0, /* Darker, more intense glow */
+              0 0 40px #a742c0;
+          }
         }
     </style>
 </head>
@@ -451,6 +468,7 @@
     </script>
 </body>
 </html>
+
 
 
 
