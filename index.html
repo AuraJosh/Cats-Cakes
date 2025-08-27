@@ -113,6 +113,28 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
+        .shiny-text {
+          /* Set the background to a gradient. This is where the "shiny" part comes from. */
+          background: linear-gradient(
+            45deg,
+            #ffcc00,
+            #ff6600,
+            #ffcc00,
+            #ff6600
+          );
+        
+          /* This is the magic property. It clips the background to the shape of the text. */
+          -webkit-background-clip: text;
+          background-clip: text;
+        
+          /* This makes the text transparent, so the background can show through. */
+          color: transparent;
+        
+          /* Optional: Adjust font-size, font-weight, or other properties for a bolder effect. */
+          font-size: 2em;
+          font-weight: bold;
+        }
     </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -148,7 +170,7 @@
         
             <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight text-gray-900">
                 <span class="block">Transform Your Business with</span>
-                <span class="block text-purple-600">Intelligent AI Chat.</span>
+                <span class="shiny-text">Intelligent AI Chat.</span>
             </h1>
             <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">Aura AI provides bespoke chatbot solutions designed to enhance customer engagement, streamline operations, and drive growth for modern businesses.</p>
             
@@ -432,3 +454,4 @@
     </script>
 </body>
 </html>
+
