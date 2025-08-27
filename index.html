@@ -151,6 +151,28 @@
             /* Or for a right-to-left shimmer, use 200% 0 */
           }
         }
+        .console-container {
+          font-family: Khula;
+          font-size: 1em; /* Adjusted to fit within the existing heading */
+          display: inline-block; /* Changed from block to fit with other text */
+          position: relative;
+          color: #1f2937; /* Matches your existing body text color */
+        }
+        .console-underscore {
+          display: inline-block;
+          position: relative;
+          top: -0.14em;
+          left: 10px;
+          animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
     </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -200,7 +222,10 @@
 
     <section id="services" class="py-24 px-8 max-w-7xl mx-auto space-y-16 animate-on-scroll">
         <div class="text-center space-y-4">
-            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Empower Your Operations.</h2>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
+              <span class='console-container' data-text='["empower your operations.", "improve customer engagement.", "streamline workflows.", "boost productivity." ]'></span>
+              <span class='console-underscore' id='console'>&#95;</span>
+            </h2>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI solutions are crafted to improve business quality by automating key tasks, providing instant support, and offering a personalized user experience.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -467,9 +492,63 @@
                 observer.observe(element);
             });
         });
+
+        function consoleText(words, id, colors) {
+          if (colors === undefined) colors = ['#1f2937']; // Match your text color
+          var visible = true;
+          var con = document.getElementById('console');
+          var letterCount = 1;
+          var x = 1;
+          var waiting = false;
+          var target = document.getElementById(id);
+          target.setAttribute('style', 'color:' + colors[0]);
+          window.setInterval(function() {
+            if (letterCount === 0 && waiting === false) {
+              waiting = true;
+              target.innerHTML = words[0].substring(0, letterCount);
+              window.setTimeout(function() {
+                var usedColor = colors.shift();
+                colors.push(usedColor);
+                var usedWord = words.shift();
+                words.push(usedWord);
+                x = 1;
+                target.setAttribute('style', 'color:' + colors[0]);
+                letterCount += x;
+                waiting = false;
+              }, 1000);
+            } else if (letterCount === words[0].length + 1 && waiting === false) {
+              waiting = true;
+              window.setTimeout(function() {
+                x = -1;
+                letterCount += x;
+                waiting = false;
+              }, 1000);
+            } else if (waiting === false) {
+              target.innerHTML = words[0].substring(0, letterCount);
+              letterCount += x;
+            }
+          }, 120);
+        }
+        
+        // Function to initialize the console effect on the heading
+        function initConsoleEffect() {
+            const heading = document.querySelector('.console-container');
+            if (heading) {
+                const words = JSON.parse(heading.getAttribute('data-text'));
+                const id = 'console';
+                const colors = ['#9f49f6']; // Use your accent color for the text
+                consoleText(words, id, colors);
+            }
+        }
+        
+        // Call the function when the page is loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            initConsoleEffect();
+        });
     </script>
 </body>
 </html>
+
 
 
 
