@@ -457,88 +457,94 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const typingContainer = document.querySelector('.typing-text-container');
-            if (typingContainer) {
-                setTimeout(() => {
-                    typingContainer.classList.add('finished');
-                }, 2500); // Duration of the typing animation
-            }
-
-            // JavaScript for scroll animations
+            // This is your existing JavaScript for the fade-in scroll animations
             const animateElements = document.querySelectorAll('.animate-on-scroll');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        // Optional: Stop observing once the element is visible to improve performance
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1 // Triggers the animation when 10% of the element is visible
+                threshold: 0.1
             });
-
             animateElements.forEach(element => {
                 observer.observe(element);
             });
+    
+            // --- NEW CODE FOR TYPING EFFECT ---
+            // Get the element to be observed
+            const typingElement = document.querySelector('.console-container');
+    
+            if (typingElement) {
+                // Create a new Intersection Observer
+                const typingObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // The element is now visible, so we start the effect
+                            const words = JSON.parse(entry.target.getAttribute('data-text'));
+                            const id = 'console';
+                            const colors = ['#000000']; // Your preferred color
+                            
+                            consoleText(words, id, colors);
+    
+                            // Stop observing once the animation is started
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.5 // Adjust this value as needed
+                });
+    
+                // Start observing the typing element
+                typingObserver.observe(typingElement);
+            }
         });
-
+    
+        // Your existing consoleText function remains unchanged
         function consoleText(words, id, colors) {
-          if (colors === undefined) colors = ['#1f2937']; // Match your text color
-          var visible = true;
-          var con = document.getElementById('console');
-          var letterCount = 1;
-          var x = 1;
-          var waiting = false;
-          var target = document.getElementById(id);
-          target.setAttribute('style', 'color:' + colors[0]);
-          window.setInterval(function() {
-            if (letterCount === 0 && waiting === false) {
-              waiting = true;
-              target.innerHTML = words[0].substring(0, letterCount);
-              window.setTimeout(function() {
-                var usedColor = colors.shift();
-                colors.push(usedColor);
-                var usedWord = words.shift();
-                words.push(usedWord);
-                x = 1;
+            if (colors === undefined) colors = ['#1f2937'];
+            var visible = true;
+            var con = document.getElementById('console');
+            var letterCount = 1;
+            var x = 1;
+            var waiting = false;
+            var target = document.getElementById(id);
+            if (target) {
                 target.setAttribute('style', 'color:' + colors[0]);
-                letterCount += x;
-                waiting = false;
-              }, 1000);
-            } else if (letterCount === words[0].length + 1 && waiting === false) {
-              waiting = true;
-              window.setTimeout(function() {
-                x = -1;
-                letterCount += x;
-                waiting = false;
-              }, 1000);
-            } else if (waiting === false) {
-              target.innerHTML = words[0].substring(0, letterCount);
-              letterCount += x;
+                window.setInterval(function() {
+                    if (letterCount === 0 && waiting === false) {
+                        waiting = true;
+                        target.innerHTML = words[0].substring(0, letterCount);
+                        window.setTimeout(function() {
+                            var usedColor = colors.shift();
+                            colors.push(usedColor);
+                            var usedWord = words.shift();
+                            words.push(usedWord);
+                            x = 1;
+                            target.setAttribute('style', 'color:' + colors[0]);
+                            letterCount += x;
+                            waiting = false;
+                        }, 1000);
+                    } else if (letterCount === words[0].length + 1 && waiting === false) {
+                        waiting = true;
+                        window.setTimeout(function() {
+                            x = -1;
+                            letterCount += x;
+                            waiting = false;
+                        }, 1000);
+                    } else if (waiting === false) {
+                        target.innerHTML = words[0].substring(0, letterCount);
+                        letterCount += x;
+                    }
+                }, 120);
             }
-          }, 120);
         }
-        
-        // Function to initialize the console effect on the heading
-        function initConsoleEffect() {
-            const heading = document.querySelector('.console-container');
-            if (heading) {
-                const words = JSON.parse(heading.getAttribute('data-text'));
-                const id = 'console';
-                const colors = ['#000000']; // Use your accent color for the text
-                consoleText(words, id, colors);
-            }
-        }
-        
-        // Call the function when the page is loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            initConsoleEffect();
-        });
     </script>
 </body>
 </html>
+
 
 
 
